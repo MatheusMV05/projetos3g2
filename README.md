@@ -1,10 +1,9 @@
-# Nome do Projeto 🚀
+# Projetos3 🚀
 
-[![Build Status](https://github.com/seu-usuario/nome-do-projeto/actions/workflows/maven.yml/badge.svg)](https://github.com/seu-usuario/nome-do-projeto/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub release](https://img.shields.io/github/release/seu-usuario/nome-do-projeto)](https://github.com/seu-usuario/nome-do-projeto/releases/)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](link-para-code-climate)
-[![Coverage Status](https://coveralls.io/repos/github/seu-usuario/nome-do-projeto/badge.svg?branch=master)](link-para-coveralls)
+[![GitHub license](https://img.shields.io/github/license/MatheusMV05/projetos3)](https://github.com/MatheusMV05/projetos3/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/MatheusMV05/projetos3)](https://github.com/MatheusMV05/projetos3/issues)
+[![GitHub stars](https://img.shields.io/github/stars/MatheusMV05/projetos3)](https://github.com/MatheusMV05/projetos3/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/MatheusMV05/projetos3)](https://github.com/MatheusMV05/projetos3/network)
 
 Breve descrição do projeto explicando seu propósito principal e funcionalidades em poucas linhas.
 
@@ -33,8 +32,8 @@ Liste todos os pré-requisitos necessários para executar o projeto:
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/nome-do-projeto.git
-cd nome-do-projeto
+git clone https://github.com/MatheusMV05/projetos3.git
+cd projetos3
 ```
 
 2. Configure as variáveis de ambiente:
@@ -135,13 +134,13 @@ mvn spring-boot:run -Dspring.profiles.active=prod
 
 ## 📌 Versionamento
 
-Usamos [SemVer](http://semver.org/) para versionamento. Para as versões disponíveis, veja as [tags neste repositório](https://github.com/seu-usuario/nome-do-projeto/tags).
+Usamos [SemVer](http://semver.org/) para versionamento. Para as versões disponíveis, veja as [tags neste repositório](https://github.com/MatheusMV05/projetos3/tags).
 
 ## ✨ Autores
 
-* **Seu Nome** - *Trabalho inicial* - [SeuUsuario](https://github.com/SeuUsuario)
+* **Matheus Vieira** - *Trabalho inicial* - [MatheusMV05](https://github.com/MatheusMV05)
 
-Veja também a lista de [contribuidores](https://github.com/seu-usuario/nome-do-projeto/contributors) que participaram deste projeto.
+Veja também a lista de [contribuidores](https://github.com/MatheusMV05/projetos3/contributors) que participaram deste projeto.
 
 ## 📝 Licença
 
@@ -157,7 +156,7 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](L
 
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-green)
 * Versão atual: 1.0.0
-* Última atualização: DD/MM/AAAA
+* Última atualização: 17/02/2025
 
 ---
-⌨️ com ❤️ por [seu-usuario](https://github.com/seu-usuario) 😊
+⌨️ com ❤️ por [MatheusMV05](https://github.com/MatheusMV05) 😊
