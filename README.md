@@ -171,4 +171,4 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](L
 * Última atualização: 17/02/2025
 
 ---
-⌨️ com ❤️ por [MatheusMV05](https://github.com/MatheusMV05) 😊
+⌨️ com ❤️ pela equipe de G2 😊
