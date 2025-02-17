@@ -138,7 +138,7 @@ Usamos [SemVer](http://semver.org/) para versionamento. Para as versões dispon�
 
 ## ✨ Autores
 
-* **Matheus Martins Verissimo** - *Trabalho inicial* - [MatheusMV05](https://github.com/MatheusMV05)
+* **Matheus Martins Verissimo** - ** - [MatheusMV05](https://github.com/MatheusMV05)
 
 Veja também a lista de [contribuidores](https://github.com/MatheusMV05/projetos3/contributors) que participaram deste projeto.
 
