@@ -37,27 +37,13 @@ Breve descrição do projeto explicando seu propósito principal e funcionalidad
 - 🐳 Docker
 - 🧪 JUnit 5 & React Testing Library
 
-## 📋 Pré-requisitos
-
-- ☕ Java Development Kit (JDK) 17 ou superior
-- 🔧 Maven 3.8+
-- 📦 Node.js 18+ e npm/yarn
-- 🐳 Docker e Docker Compose
-- ☁️ Conta Azure e Azure CLI
-
 ## 🛠️ Configuração do Ambiente
 
-1. Clone o repositório:
-```bash
-git clone https://github.com/MatheusMV05/projetos3.git
-cd projetos3
-```
-
-2. Configure as variáveis de ambiente:
+1. Configure as variáveis de ambiente:
    - Crie arquivos `.env` para backend e frontend baseados nos `.env.example`
    - Configure as credenciais do Azure
 
-3. Instale as dependências:
+2. Instale as dependências:
 
 Backend:
 ```bash
