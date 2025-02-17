@@ -4,29 +4,46 @@
 [![GitHub issues](https://img.shields.io/github/issues/MatheusMV05/projetos3)](https://github.com/MatheusMV05/projetos3/issues)
 [![GitHub stars](https://img.shields.io/github/stars/MatheusMV05/projetos3)](https://github.com/MatheusMV05/projetos3/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/MatheusMV05/projetos3)](https://github.com/MatheusMV05/projetos3/network)
+![Azure DevOps builds](https://img.shields.io/azure-devops/build/seu-projeto/seu-pipeline)
+![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/seu-projeto/seu-pipeline)
 
 Breve descrição do projeto explicando seu propósito principal e funcionalidades em poucas linhas.
 
 ## ⚡ Tecnologias Utilizadas
 
+### Backend
 - ☕ Java 17
 - 🍃 Spring Boot 3.x
 - 🔒 Spring Security
 - 🎯 Spring Data JPA
 - 🐘 PostgreSQL
 - 🔧 Maven
-- 🐳 Docker
-- 🧪 JUnit 5
 - 📚 Swagger/OpenAPI
+
+### Frontend
+- ⚛️ React 18
+- 🎨 Material UI
+- 🔄 React Query
+- 🛣️ React Router
+- 📡 Axios
+- 💅 Styled Components
+
+### DevOps & Cloud
+- ☁️ Microsoft Azure
+  - 🌐 Azure App Service
+  - 🗄️ Azure Database for PostgreSQL
+  - 🔄 Azure DevOps
+  - 📦 Azure Container Registry
+- 🐳 Docker
+- 🧪 JUnit 5 & React Testing Library
 
 ## 📋 Pré-requisitos
 
-Liste todos os pré-requisitos necessários para executar o projeto:
-
 - ☕ Java Development Kit (JDK) 17 ou superior
 - 🔧 Maven 3.8+
+- 📦 Node.js 18+ e npm/yarn
 - 🐳 Docker e Docker Compose
-- 🐘 PostgreSQL (se não estiver usando Docker)
+- ☁️ Conta Azure e Azure CLI
 
 ## 🛠️ Configuração do Ambiente
 
@@ -37,24 +54,37 @@ cd projetos3
 ```
 
 2. Configure as variáveis de ambiente:
-   - Crie um arquivo `.env` baseado no `.env.example`
-   - Ajuste as variáveis conforme seu ambiente
+   - Crie arquivos `.env` para backend e frontend baseados nos `.env.example`
+   - Configure as credenciais do Azure
 
-3. Configure o banco de dados:
-   - Se estiver usando Docker:
-   ```bash
-   docker-compose up -d database
-   ```
-   - Se estiver usando PostgreSQL local:
-     - Crie um banco de dados
-     - Atualize as configurações em `application.properties`
+3. Instale as dependências:
+
+Backend:
+```bash
+cd backend
+mvn install
+```
+
+Frontend:
+```bash
+cd frontend
+npm install
+```
 
 ## 🚀 Executando o Projeto
 
-### Usando Maven:
+### Ambiente Local
 
+Backend:
 ```bash
+cd backend
 mvn spring-boot:run
+```
+
+Frontend:
+```bash
+cd frontend
+npm run dev
 ```
 
 ### Usando Docker:
@@ -63,65 +93,67 @@ mvn spring-boot:run
 docker-compose up --build
 ```
 
-A aplicação estará disponível em: `http://localhost:8080`
-
-## 📖 Documentação da API
-
-A documentação da API está disponível através do Swagger UI:
-- 💻 Local: `http://localhost:8080/swagger-ui.html`
-- 🌐 Produção: `https://seu-dominio.com/swagger-ui.html`
+- Backend: `http://localhost:8080`
+- Frontend: `http://localhost:5173`
+- Swagger UI: `http://localhost:8080/swagger-ui.html`
 
 ## 📁 Estrutura do Projeto
 
 ```
-src/
-├── main/
-│   ├── java/
-│   │   └── com/empresa/projeto/
-│   │       ├── config/
-│   │       ├── controller/
-│   │       ├── model/
-│   │       ├── repository/
-│   │       ├── service/
-│   │       └── security/
-│   └── resources/
-│       ├── application.properties
-│       ├── application-dev.properties
-│       └── application-prod.properties
-└── test/
-    └── java/
-        └── com/empresa/projeto/
-            ├── controller/
-            ├── service/
-            └── repository/
+/
+├── backend/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   └── resources/
+│   │   └── test/
+│   └── pom.xml
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── hooks/
+│   ├── public/
+│   └── package.json
+│
+├── .github/
+├── azure-pipelines.yml
+└── docker-compose.yml
 ```
 
 ## 🧪 Testes
 
-Execute os testes usando:
-
+Backend:
 ```bash
+cd backend
 mvn test
 ```
 
-Para relatório de cobertura:
-
+Frontend:
 ```bash
-mvn verify
+cd frontend
+npm test
 ```
 
-## 🚀 Deploy
+## ☁️ Deploy Azure
 
-Instruções para deploy em diferentes ambientes:
-
-### 💻 Desenvolvimento
+1. Configure o Azure CLI:
 ```bash
-mvn spring-boot:run -Dspring.profiles.active=dev
+az login
 ```
 
-### 🌐 Produção
+2. Deploy do Backend:
 ```bash
-mvn spring-boot:run -Dspring.profiles.active=prod
+az webapp up --runtime JAVA:17-java17 --sku B1 --name seu-app-name
+```
+
+3. Deploy do Frontend:
+```bash
+az staticwebapp create --name seu-frontend-name --resource-group seu-grupo
+cd frontend && npm run build
+az staticwebapp deploy --app-location ./dist
 ```
 
 ## 🤝 Contribuindo
@@ -138,19 +170,13 @@ Usamos [SemVer](http://semver.org/) para versionamento. Para as versões dispon�
 
 ## ✨ Autores
 
-* **Matheus Martins Verissimo** - ** - [MatheusMV05](https://github.com/MatheusMV05)
+* **Matheus Vieira** - *Trabalho inicial* - [MatheusMV05](https://github.com/MatheusMV05)
 
 Veja também a lista de [contribuidores](https://github.com/MatheusMV05/projetos3/contributors) que participaram deste projeto.
 
 ## 📝 Licença
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes
-
-## 🙏 Agradecimentos
-
-* Mencione pessoas ou projetos que ajudaram
-* Inspirações
-* Referências
 
 ## 📊 Status do Projeto
 
