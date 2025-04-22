@@ -1,4 +1,4 @@
-package com.brasfi.siteinstitucional.model;
+package com.brasfi.siteinstitucional.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
