@@ -1,0 +1,95 @@
+.header {
+	width: 100%;
+	padding: 12px 16px;
+	background-color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+.leftSection {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+}
+
+.logo {
+	width: 63.541px;
+	height: 36px;
+	aspect-ratio: 63.54/36;
+}
+
+.nav {
+	display: flex;
+	gap: 32px;
+}
+
+.nav a {
+	color: #000;
+	text-decoration: none;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: normal;
+	position: relative;
+}
+
+.nav a:hover,
+.nav a.active,
+.active {
+	text-decoration: underline;
+}
+
+.dropdownArrow {
+	width: 24px;
+	height: 24px;
+}
+
+.rightSection {
+	display: flex;
+	gap: 12px;
+}
+
+.langBtn {
+	padding: 8px 20px;
+	border: 1px solid #000;
+	background-color: transparent;
+	color: #000;
+    font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	border-radius: 4px;
+    gap: 8px;
+}
+
+.contactBtn {
+	padding: 8px 20px;
+	background-color: #000;
+	color: #fff;
+    font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	border: none;
+	border-radius: 4px;
+    gap: 8px;
+}
+
+/* 📱 Responsivo */
+@media (max-width: 768px) {
+	.nav {
+		display: none;
+	}
+
+	.header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	.rightSection {
+		align-self: flex-end;
+	}
+}
