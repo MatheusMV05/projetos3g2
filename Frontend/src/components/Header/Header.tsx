@@ -12,9 +12,7 @@ const Header: React.FC = () => {
 				<nav className={styles.nav}>
 					<a href="#">Sobre a BRASFI</a>
 					<a href="#">Serviços</a>
-					<Link to="/trabalhe-conosco">
-						Faça parte
-					</Link>
+					<Link to="/trabalhe-conosco">Faça parte</Link>
 					<Link to="/evento">Eventos</Link>
 					<a href="#">
 						Notícias <span className={styles.dropdownArrow}>▼</span>
