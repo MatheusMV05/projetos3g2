@@ -15,7 +15,7 @@ const Header: React.FC = () => {
 					<Link to="/trabalhe-conosco">
 						Faça parte
 					</Link>
-					<a href="#">Eventos</a>
+					<Link to="/evento">Eventos</Link>
 					<a href="#">
 						Notícias <span className={styles.dropdownArrow}>▼</span>
 					</a>
