@@ -9,6 +9,7 @@ const Footer: React.FC = () => {
 					<h3>Assine nossa newsletter</h3>
 					<p>Fique por dentro das novidades sobre finanças sustentáveis.</p>
 				</div>
+
 				<form className={styles.form} onSubmit={(e) => e.preventDefault()}>
 					<input
 						type="email"
@@ -19,12 +20,15 @@ const Footer: React.FC = () => {
 					<button type="submit" className={styles.submit}>
 						Inscrever
 					</button>
-					<p className={styles.privacy}>
-						Ao se inscrever, você concorda com nossa{' '}
-						<a href="#">Política de Privacidade</a>.
-					</p>
 				</form>
 			</div>
+
+			<p className={styles.privacy}>
+				<a href="#">
+					Ao se inscrever, você concorda com nossa Política de Privacidade
+				</a>
+				.
+			</p>
 
 			<hr className={styles.divider} />
 

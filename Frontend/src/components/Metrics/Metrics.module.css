@@ -1,0 +1,118 @@
+.metricsSection {
+	padding: 64px 32px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	gap: 64px;
+	flex-wrap: wrap;
+}
+
+.header h2 {
+	flex: 1;
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 48px; /* 100% */
+	letter-spacing: -1.44px;
+	color: #000;
+}
+
+.header p {
+	flex: 1;
+	font-size: 1.5rem;
+	color: #333;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: auto auto;
+	gap: 24px;
+	grid-template-areas:
+		'growth image1 social'
+		'investment investment image2';
+}
+
+.card {
+	border: 1px solid #000;
+	padding: 32px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 240px;
+	background-color: #fff;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+	position: relative;
+	cursor: default;
+}
+
+.card:hover {
+	border-color: #1a73e8;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+	transform: translateY(-4px);
+}
+
+.card:nth-of-type(1) {
+	grid-area: growth;
+}
+
+.card:nth-of-type(2) {
+	grid-area: investment;
+}
+
+.card:nth-of-type(3) {
+	grid-area: social;
+}
+
+.value {
+	font-size: 4rem;
+	font-weight: 700;
+	line-height: 64px; /* 100% */
+	letter-spacing: -1.92px;
+	margin-bottom: 24px;
+	color: #000;
+}
+
+.cardTitle {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 4px;
+	line-height: 24px; /* 100% */
+	letter-spacing: -0.72px;
+	color: #000;
+}
+
+.cardDesc {
+	font-size: 1rem;
+    font-weight: 400;
+	color: #555;
+}
+
+.imagePlaceholder {
+	background-color: #ccc;
+	height: 277px;
+	align-self: stretch;
+}
+
+.imagePlaceholder:first-of-type {
+	grid-area: image1;
+}
+
+.imagePlaceholder:last-of-type {
+	grid-area: image2;
+}
+
+@media (max-width: 768px) {
+	.grid {
+		grid-template-areas: none;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto;
+	}
+}

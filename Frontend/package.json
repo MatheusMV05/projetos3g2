@@ -13,6 +13,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.8.4",
     "formik": "^2.4.6",
+    "framer-motion": "^12.11.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.6.0",
