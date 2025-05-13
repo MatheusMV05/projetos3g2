@@ -1,113 +1,99 @@
-.footer {
-	background-color: #fff;
-	padding: 48px 32px;
-	font-family: sans-serif;
-	color: #000;
-  }
-  
-  .newsletter {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	gap: 24px;
-	margin-bottom: 32px;
-  }
-  
-  .newsText h3 {
-	font-size: 1.25rem;
-	font-weight: 700;
-	margin-bottom: 8px;
-  }
-  
-  .newsText p {
-	font-size: 0.95rem;
-	color: #333;
-  }
-  
-  .form {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	max-width: 300px;
+.container {
+	background-color: #5a5a5a;
 	width: 100%;
-  }
-  
-  .input {
-	width: 100%;
-	padding: 8px 12px;
-	border: 1px solid #000;
-	border-radius: 2px;
-	margin-bottom: 8px;
-  }
-  
-  .submit {
-	padding: 8px 16px;
-	background-color: #000;
+	padding: 112px 64px;
+	text-align: center;
+}
+
+.title {
 	color: #fff;
-	font-weight: bold;
-	border: none;
-	cursor: pointer;
-	align-self: flex-end;
-	margin-bottom: 8px;
-  }
-  
-  .privacy {
-	font-size: 0.75rem;
-	color: #444;
-  }
-  
-  .privacy a {
-	text-decoration: underline;
-	color: inherit;
-  }
-  
-  .divider {
-	border: none;
-	border-top: 1px solid #ccc;
-	margin: 24px 0;
-  }
-  
-  .bottom {
+	font-size: 3.5rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 100%;
+	letter-spacing: -1.68px;
+	margin-bottom: 16px;
+}
+
+.subtitle {
+	color: #fff;
+	font-size: 1.5rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 32px;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.buttonGroup {
 	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	align-items: center;
-	gap: 16px;
-  }
-  
-  .logoSection {
-	display: flex;
+	padding: 12px 24px;
+	justify-content: center;
 	align-items: center;
 	gap: 8px;
-  }
-  
-  .logo {
-	height: 24px;
-  }
-  
-  .logoText {
-	font-weight: bold;
+    flex-wrap: wrap;
+}
+
+.supportButton {
+	background-color: #fff;
+	color: #000;
+	border: none;
+	padding: 12px 24px;
 	font-size: 1rem;
-  }
-  
-  .rights {
-	font-size: 0.85rem;
-	color: #333;
-  }
-  
-  /* 📱 Responsividade */
-  @media (max-width: 600px) {
-	.newsletter {
-	  flex-direction: column;
+	font-weight: 600;
+	cursor: pointer;
+	border-radius: 4px;
+	border: 1px solid #fff;
+    min-width: 140px;
+}
+
+.participateButton {
+	background-color: transparent;
+	color: #fff;
+	border: 2px solid #fff;
+	padding: 12px 24px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	border-radius: 4px;
+	border: 1px solid #fff;
+    min-width: 140px;
+}
+
+/* ✅ Responsividade */
+@media (max-width: 768px) {
+	.title {
+		font-size: 2rem;
 	}
-  
-	.bottom {
-	  flex-direction: column;
-	  align-items: flex-start;
+
+	.subtitle {
+		font-size: 1rem;
 	}
-  
-	.submit {
-	  align-self: stretch;
+
+	.buttonGroup {
+		flex-direction: column;
+		align-items: center;
 	}
-  }
-  
+
+	.supportButton,
+	.participateButton {
+		width: 80%;
+		max-width: 300px;
+	}
+}
+
+@media (max-width: 480px) {
+	.title {
+		font-size: 1.5rem;
+	}
+
+	.subtitle {
+		font-size: 0.95rem;
+	}
+
+	.container {
+		padding: 40px 16px;
+	}
+}
