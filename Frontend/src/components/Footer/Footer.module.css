@@ -35,7 +35,8 @@
 .form {
 	display: flex;
 	gap: 8px;
-	margin-left: auto; /* ✨ empurra o formulário pro canto direito */
+	margin-left: auto;
+	/* ✨ empurra o formulário pro canto direito */
 	min-width: 300px;
 }
 
@@ -135,7 +136,8 @@
 		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 0.875rem;
 	font-weight: 400;
-	line-height: 150%; /* 21px */
+	line-height: 150%;
+	/* 21px */
 	color: #333;
 }
 
@@ -147,7 +149,8 @@
 
 	.form {
 		width: 100%;
-		margin-left: 0; /* remove empurrão no mobile */
+		margin-left: 0;
+		/* remove empurrão no mobile */
 	}
 
 	.privacy {

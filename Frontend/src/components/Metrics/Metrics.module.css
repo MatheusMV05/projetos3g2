@@ -17,7 +17,8 @@
 	flex: 1;
 	font-size: 3rem;
 	font-weight: 700;
-	line-height: 48px; /* 100% */
+	line-height: 48px;
+	/* 100% */
 	letter-spacing: -1.44px;
 	color: #000;
 }
@@ -74,7 +75,8 @@
 .value {
 	font-size: 4rem;
 	font-weight: 700;
-	line-height: 64px; /* 100% */
+	line-height: 64px;
+	/* 100% */
 	letter-spacing: -1.92px;
 	margin-bottom: 24px;
 	color: #000;
@@ -84,14 +86,15 @@
 	font-size: 1.5rem;
 	font-weight: 600;
 	margin-bottom: 4px;
-	line-height: 24px; /* 100% */
+	line-height: 24px;
+	/* 100% */
 	letter-spacing: -0.72px;
 	color: #000;
 }
 
 .cardDesc {
 	font-size: 1rem;
-    font-weight: 400;
+	font-weight: 400;
 	color: #555;
 }
 
