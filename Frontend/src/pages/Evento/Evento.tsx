@@ -10,13 +10,9 @@ const Evento: React.FC = () => {
 			<p>
 				Lorem ipsum dolor sit amet consectetur adipiscing elit.
 				<br />
-				<br />
-				<br />
 			</p>
 
-			<div
-				style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}
-			>
+			<div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>
 				{/* Evento em destaque */}
 				<div style={{ border: '1px solid #ccc', borderRadius: '4px', background: '#f9f9f9' }}>
 					<div
@@ -60,13 +56,6 @@ const Evento: React.FC = () => {
 							Categoria
 						</div>
 						<div style={{ fontWeight: 'bold', fontSize: '1.1rem', margin: '0.5rem 0' }}>
-						<div
-							style={{
-								fontWeight: 'bold',
-								fontSize: '1.1rem',
-								margin: '0.5rem 0',
-							}}
-						>
 							Título do Evento
 						</div>
 						<div style={{ fontSize: '0.9rem' }}>
@@ -114,7 +103,9 @@ const Evento: React.FC = () => {
 					/>
 				</div>
 			</div>
-
+			<br></br>
+			<br></br>
+			<br></br>
 			{/* BlogPostHeader */}
 			<BlogPostHeader />
 
