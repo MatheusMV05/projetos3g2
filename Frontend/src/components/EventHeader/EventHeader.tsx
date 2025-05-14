@@ -5,7 +5,6 @@ interface EventHeaderProps {
   day: string;
   weekday: string;
   month: string;
-  year: string;
   title: string;
   category?: string;
   location: string;
@@ -15,7 +14,6 @@ export const EventHeader: React.FC<EventHeaderProps> = ({
   day,
   weekday,
   month,
-  year,
   title,
   category,
   location,
@@ -25,7 +23,7 @@ export const EventHeader: React.FC<EventHeaderProps> = ({
       <div className={styles.left}>
         <div className={styles.weekday}>{weekday}</div>
         <div className={styles.day}>{day}</div>
-        <div className={styles.month}>{month} {year}</div>
+        <div className={styles.month}>{month}</div>
       </div>
       <div className={styles.right}>
         <div>
