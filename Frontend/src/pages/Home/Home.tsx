@@ -1,12 +1,12 @@
 import React from 'react';
+import HeroSection from '../../components/HeroSection/HeroSection';
 
 const Home: React.FC = () => {
-	return (
-		<div>
-			<h1>Bem-vindo ao site da BRASFI</h1>
-			<p>Esta é a página inicial temporária.</p>
-		</div>
-	);
+  return (
+    <>
+      <HeroSection />
+    </>
+  );
 };
 
 export default Home;
