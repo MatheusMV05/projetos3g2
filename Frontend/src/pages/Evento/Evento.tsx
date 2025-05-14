@@ -8,6 +8,8 @@ const Evento: React.FC = () => {
 			<h1>Eventos</h1>
 			<p>
 				Participe dos nossos eventos e descubra como a sustentabilidade pode transformar o futuro financeiro.
+				<br></br>
+				<br></br>
 			</p>
 
 			<div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>

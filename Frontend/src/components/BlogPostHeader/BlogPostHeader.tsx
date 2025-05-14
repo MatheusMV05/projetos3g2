@@ -9,9 +9,12 @@ const BlogPostHeader: React.FC = () => {
 			<div className={styles.left}>
 				<div className={styles.backLink}>Eventos &gt;</div>
 				<h1 className={styles.title}>
-					Como Finanças Sustentáveis<br />
-					Transforma Negócios
+  					Como Finanças<br />
+  					Sustentáveis<br />
+  					Transforma<br />
+  					Negócios
 				</h1>
+
 				<p className={styles.details}>11 Junho • 19h • Porto Digital</p>
 
 				<div className={styles.share}>
