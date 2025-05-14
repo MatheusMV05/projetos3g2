@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './BlogPostHeader.module.css';
-import { FaFacebookF, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
+import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import { LuLink } from 'react-icons/lu';
 
 const BlogPostHeader: React.FC = () => {
@@ -22,7 +22,7 @@ const BlogPostHeader: React.FC = () => {
 					<div className={styles.icons}>
 						<a href="#"><LuLink /></a>
 						<a href="#"><FaLinkedinIn /></a>
-						<a href="#"><FaXTwitter /></a>
+						<a href="#"><FaTwitter /></a>
 						<a href="#"><FaFacebookF /></a>
 					</div>
 				</div>
