@@ -1,15 +1,18 @@
 .container {
 	display: flex;
 	align-items: center;
-	justify-content: center; /* Centraliza os itens horizontalmente */
+	justify-content: center;
+	/* Centraliza os itens horizontalmente */
 	gap: 80px;
 	align-self: stretch;
 	padding: 64px 32px;
 	background-color: #fff;
 	flex-wrap: wrap;
 	width: 100%;
-	max-width: 1200px; /* Opcional: limite a largura máxima do componente */
-	margin: 0 auto; /* Centraliza o contêiner na tela */
+	max-width: 1200px;
+	/* Opcional: limite a largura máxima do componente */
+	margin: 0 auto;
+	/* Centraliza o contêiner na tela */
 }
 
 .video {
@@ -63,13 +66,14 @@ blockquote {
 	color: #000;
 	font-size: 1.5 rem;
 	font-weight: 600;
-	line-height: 24px; /* 100% */
+	line-height: 24px;
+	/* 100% */
 	letter-spacing: -0.72px;
 }
 
 .author span {
 	display: block;
-    font-size: 1rem;
-    font-weight: 400;
+	font-size: 1rem;
+	font-weight: 400;
 	color: #555;
 }

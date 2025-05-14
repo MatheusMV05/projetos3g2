@@ -47,7 +47,7 @@
 }
 
 .tagTime {
-    display: flex;
+	display: flex;
 	align-items: center;
 	gap: 1rem;
 	margin-bottom: 0.8rem;
@@ -62,20 +62,20 @@
 
 .time {
 	font-size: 1rem;
-    font-weight: 600;
+	font-weight: 600;
 	color: #666;
 }
 
 .cardTitle {
 	font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: -1.44px;
+	font-weight: 700;
+	letter-spacing: -1.44px;
 	margin: 0.5rem 0;
 }
 
 .description {
 	font-size: 1.5rem;
-    font-weight: 400;
+	font-weight: 400;
 	color: #444;
 	margin-bottom: 1.2rem;
 }

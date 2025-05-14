@@ -5,7 +5,8 @@
 }
 
 .sliderContainer {
-	max-width: 1344px; /* 3 cards de 416px + espaçamentos */
+	max-width: 1344px;
+	/* 3 cards de 416px + espaçamentos */
 	margin: 0 auto;
 	padding: 0 24px;
 }
@@ -15,7 +16,8 @@
 		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 3rem;
 	font-weight: 700;
-	line-height: 120%; /* 57.6px */
+	line-height: 120%;
+	/* 57.6px */
 	margin-bottom: 0.5rem;
 }
 
@@ -25,10 +27,10 @@
 	font-size: 1.125rem;
 	font-weight: 400;
 	color: #444;
-    text-align: center;
-    margin: auto;
-    margin-top: 1.5rem;
-    margin-bottom: 2.5rem;
+	text-align: center;
+	margin: auto;
+	margin-top: 1.5rem;
+	margin-bottom: 2.5rem;
 }
 
 .slider {
@@ -56,7 +58,7 @@
 	font-size: 1.2rem;
 	color: #000;
 	margin-bottom: 1rem;
-    text-align: left;
+	text-align: left;
 }
 
 .text {
@@ -65,7 +67,8 @@
 	font-weight: 400;
 	margin-bottom: 1rem;
 	text-align: left;
-	line-height: 150%; /* 27px */
+	line-height: 150%;
+	/* 27px */
 }
 
 .profile {
@@ -86,7 +89,8 @@
 		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 1rem;
 	font-weight: 600;
-	line-height: 150%; /* 24px */
+	line-height: 150%;
+	/* 24px */
 	text-align: left;
 	margin: 0;
 }
@@ -152,10 +156,11 @@
 	align-items: stretch;
 }
 
-.slick-slide > div {
+.slick-slide>div {
 	padding: 0 12px;
 	box-sizing: border-box;
 	height: 100%;
 	display: flex;
-	justify-content: center; /* centraliza os cards quando estiver com 1 ou 2 */
+	justify-content: center;
+	/* centraliza os cards quando estiver com 1 ou 2 */
 }

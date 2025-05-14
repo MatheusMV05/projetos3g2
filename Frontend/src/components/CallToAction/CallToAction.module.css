@@ -33,7 +33,7 @@
 	justify-content: center;
 	align-items: center;
 	gap: 8px;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 
 .supportButton {
@@ -46,7 +46,7 @@
 	cursor: pointer;
 	border-radius: 4px;
 	border: 1px solid #fff;
-    min-width: 140px;
+	min-width: 140px;
 }
 
 .participateButton {
@@ -59,7 +59,7 @@
 	cursor: pointer;
 	border-radius: 4px;
 	border: 1px solid #fff;
-    min-width: 140px;
+	min-width: 140px;
 }
 
 /* ✅ Responsividade */

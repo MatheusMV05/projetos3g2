@@ -60,7 +60,8 @@
 		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 0.875rem;
 	font-weight: 600;
-	line-height: 150%; /* 21px */
+	line-height: 150%;
+	/* 21px */
 }
 
 .button {
@@ -70,5 +71,5 @@
 	cursor: pointer;
 	padding: 0;
 	font-size: 1rem;
-    font-weight: 600;
+	font-weight: 600;
 }

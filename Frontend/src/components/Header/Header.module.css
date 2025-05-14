@@ -39,8 +39,8 @@
   position: relative;
 }
 
-.nav a:hover, 
-.nav a.active, 
+.nav a:hover,
+.nav a.active,
 .active {
   text-decoration: underline;
 }
@@ -115,6 +115,7 @@
 
 /* 📱 Responsivo - Ajustes para telas pequenas */
 @media (max-width: 768px) {
+
   /* Estrutura geral do header */
   .header {
     flex-wrap: wrap;
@@ -133,7 +134,8 @@
     margin-top: 12px;
     width: 100%;
     justify-content: space-between;
-    display: none; /* Esconde os botões em telas pequenas */
+    display: none;
+    /* Esconde os botões em telas pequenas */
   }
 
   /* Estilos do menu quando fechado */

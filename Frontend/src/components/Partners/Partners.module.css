@@ -5,11 +5,12 @@
 }
 
 .title {
-    align-self: stretch;
+	align-self: stretch;
 	font-size: 3rem;
 	font-weight: 700;
 	margin-bottom: 40px;
-	line-height: 48px; /* 100% */
+	line-height: 48px;
+	/* 100% */
 	letter-spacing: -1.44px;
 	color: #000;
 }
@@ -24,6 +25,6 @@
 
 .logos img {
 	width: 120px;
-    height: 40px;
+	height: 40px;
 	object-fit: contain;
 }
