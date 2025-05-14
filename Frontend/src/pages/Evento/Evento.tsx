@@ -1,5 +1,6 @@
 import React from 'react';
 import { EventHeader } from '../../components/EventHeader/EventHeader';
+import BlogPostHeader from '../../components/BlogPostHeader/BlogPostHeader';
 
 const Evento: React.FC = () => {
 	return (
@@ -36,7 +37,7 @@ const Evento: React.FC = () => {
 					</div>
 				</div>
 
-				{/* Lista lateral */}
+				{/* Lista lateral de eventos */}
 				<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
 					<EventHeader
 						weekday="Sex"
@@ -65,6 +66,9 @@ const Evento: React.FC = () => {
 					/>
 				</div>
 			</div>
+
+			{/* BlogPostHeader */}
+			<BlogPostHeader />
 		</div>
 	);
 };
