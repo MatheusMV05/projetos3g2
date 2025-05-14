@@ -1,0 +1,111 @@
+.container {
+	padding: 112px 64px;
+}
+
+.title {
+	align-self: stretch;
+	color: #080a09;
+	font-size: 3.5rem;
+	font-weight: 700;
+	letter-spacing: -1.68px;
+}
+
+.subtitle {
+	color: #555;
+	margin-bottom: 2rem;
+	font-size: 1.125rem;
+	font-weight: 400;
+}
+
+.cardWrapper {
+	display: flex;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	overflow: hidden;
+	max-width: 960px;
+	margin-bottom: 2rem;
+}
+
+.imagePlaceholder {
+	background-color: #ddd;
+	flex: 1;
+	min-height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+	color: #aaa;
+}
+
+.cardContent {
+	flex: 1;
+	padding: 48px;
+	justify-content: space-between;
+	flex: 1 0 0;
+	align-self: stretch;
+	background-color: white;
+}
+
+.tagTime {
+    display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 0.8rem;
+}
+
+.tag {
+	background-color: #FCC806;
+	padding: 0.25rem 0.5rem;
+	font-size: 1rem;
+	font-weight: 400;
+}
+
+.time {
+	font-size: 1rem;
+    font-weight: 600;
+	color: #666;
+}
+
+.cardTitle {
+	font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -1.44px;
+	margin: 0.5rem 0;
+}
+
+.description {
+	font-size: 1.5rem;
+    font-weight: 400;
+	color: #444;
+	margin-bottom: 1.2rem;
+}
+
+.readMore {
+	font-weight: 600;
+	font-size: 1rem;
+	color: #000;
+	text-decoration: none;
+}
+
+.readMore:hover {
+	text-decoration: underline;
+}
+
+/* ...mantém os estilos anteriores */
+
+.viewAllButton {
+	background-color: #000;
+	color: #fff;
+	padding: 0.75rem 1.5rem;
+	font-size: 1rem;
+	font-weight: bold;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.viewAllButton:hover {
+	background-color: #333;
+	transform: scale(1.05);
+}
