@@ -11,7 +11,7 @@ const Header: React.FC = () => {
 				</Link>
 				<nav className={styles.nav}>
 					<a href="#">Sobre a BRASFI</a>
-					<a href="#">Serviços</a>
+					<Link to="/servicos">Serviços</Link>
 					<Link to="/trabalhe-conosco">Faça parte</Link>
 					<Link to="/evento">Eventos</Link>
 					<a href="#">
