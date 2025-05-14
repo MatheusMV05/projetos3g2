@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Unageo';
+  src: url('./assets/fonts/Unageo-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
