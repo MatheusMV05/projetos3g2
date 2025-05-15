@@ -1,7 +1,8 @@
 import React from 'react';
 import { EventHeader } from '../../components/EventHeader/EventHeader';
 import BlogPostHeader from '../../components/BlogPostHeader/BlogPostHeader';
-import ProximosEventos from '../../components/ProximosEventos/ProximosEventos'; // <-- IMPORTADO AQUI
+import ProximosEventos from '../../components/ProximosEventos/ProximosEventos';
+import Blog from '../../components/Blog/Blog';
 
 const Evento: React.FC = () => {
 	return (
@@ -103,14 +104,19 @@ const Evento: React.FC = () => {
 					/>
 				</div>
 			</div>
-			<br></br>
-			<br></br>
-			<br></br>
+
+			<br />
+			<br />
+			<br />
+
 			{/* BlogPostHeader */}
 			<BlogPostHeader />
 
 			{/* ProximosEventos */}
 			<ProximosEventos />
+
+			{/* Blog */}
+			<Blog />
 		</div>
 	);
 };

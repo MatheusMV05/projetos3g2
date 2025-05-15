@@ -1,0 +1,129 @@
+.blogSection {
+  padding: 4rem 2rem;
+}
+
+.mainHighlight {
+  display: flex;
+  gap: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.mainImage {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  font-size: 2rem;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.mainContent {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mainCategory {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.mainTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.mainDescription {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.mainAuthor {
+  font-size: 0.85rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filters button {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.filters button:hover {
+  background-color: #eee;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardImage {
+  height: 160px;
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #999;
+}
+
+.cardContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardCategory {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.cardTitle {
+  font-weight: 600;
+}
+
+.cardAuthor {
+  font-size: 0.75rem;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
