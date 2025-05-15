@@ -6,6 +6,7 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class Sobre {
     @Id

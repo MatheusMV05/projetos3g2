@@ -7,6 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Historia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
