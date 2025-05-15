@@ -50,7 +50,7 @@ const Header: React.FC = () => {
 
 			{/* Menu de navegação com classe dinâmica */}
 			<nav className={`${styles.nav} ${isMenuOpen ? styles.menuOpen : ''}`}>
-				<a href="#">Sobre a BRASFI</a>
+				<a href="/sobre">Sobre a BRASFI</a>
 				<a href="#">Serviços</a>
 				<Link to="/trabalhe-conosco">Faça parte</Link>
 				<Link to="/evento">Eventos</Link>
