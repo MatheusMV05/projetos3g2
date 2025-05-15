@@ -1,6 +1,6 @@
 .hero {
   background-color: #5A5A5A;
-  color: white;
+  color: #fff;
   padding: 80px 20px;
   display: flex;
   align-items: center;
@@ -10,8 +10,9 @@
 }
 
 .content {
-  margin-right: 600px;
   max-width: 800px;
+  text-align: left;
+  margin-right: auto;
 }
 
 h1 {
