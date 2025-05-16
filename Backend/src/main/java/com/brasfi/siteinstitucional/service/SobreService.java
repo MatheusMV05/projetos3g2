@@ -1,6 +1,7 @@
 package com.brasfi.siteinstitucional.service;
 
 import com.brasfi.siteinstitucional.dto.SobreDTO;
+import com.brasfi.siteinstitucional.entity.Governanca;
 import com.brasfi.siteinstitucional.entity.Sobre;
 import com.brasfi.siteinstitucional.exception.ResourceNotFoundException;
 import com.brasfi.siteinstitucional.repository.SobreRepository;
@@ -21,6 +22,11 @@ public class SobreService {
     public Sobre buscarPorId(Long id){
         return sobreRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Página sobre não encontrada com o id: " + id));
+    }
+
+    public Sobre buscarPorSlug(String slug) {
+        return sobreRepository.findBySlug(slug)
+                .orElseThrow(() -> new ResourceNotFoundException(" 'Pilar' não encontrado com o slug: " + slug));
     }
 
     public Sobre salvar(SobreDTO sobreDTO){

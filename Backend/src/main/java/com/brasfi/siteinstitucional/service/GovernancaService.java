@@ -3,6 +3,7 @@ package com.brasfi.siteinstitucional.service;
 import com.brasfi.siteinstitucional.dto.GovernancaDTO;
 import com.brasfi.siteinstitucional.entity.Governanca;
 import com.brasfi.siteinstitucional.exception.ResourceNotFoundException;
+import com.brasfi.siteinstitucional.model.Pagina;
 import com.brasfi.siteinstitucional.repository.GovernancaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
@@ -18,7 +19,12 @@ public class GovernancaService {
 
     public Governanca buscarPorId(Long id){
         return governancaRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Página não encontrada com o id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Governança não encontrada com o id: " + id));
+    }
+
+    public Governanca buscarPorSlug(String slug) {
+        return governancaRepository.findBySlug(slug)
+                .orElseThrow(() -> new ResourceNotFoundException("Governança não encontrada com o slug: " + slug));
     }
 
     public Governanca salvar(GovernancaDTO governancaDTO){

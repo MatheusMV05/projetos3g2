@@ -1,6 +1,7 @@
 package com.brasfi.siteinstitucional.service;
 
 import com.brasfi.siteinstitucional.dto.PilaresDTO;
+import com.brasfi.siteinstitucional.entity.Governanca;
 import com.brasfi.siteinstitucional.entity.Pilares;
 import com.brasfi.siteinstitucional.exception.ResourceNotFoundException;
 import com.brasfi.siteinstitucional.repository.PilaresRepository;
@@ -21,6 +22,11 @@ public class PilaresService {
     public Pilares buscarPorId(Long id){
         return pilaresRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Página de pilares não encontrada com o id: " + id));
+    }
+
+    public Pilares buscarPorSlug(String slug) {
+        return pilaresRepository.findBySlug(slug)
+                .orElseThrow(() -> new ResourceNotFoundException("Pilar não encontrado com o slug: " + slug));
     }
 
     public Pilares salvar(PilaresDTO pilaresDTO){
