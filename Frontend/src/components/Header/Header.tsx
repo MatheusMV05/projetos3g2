@@ -63,6 +63,7 @@ const Header: React.FC = () => {
 							<a href="#">Últimas notícias</a>
 							<a href="#">Blog</a>
 							<a href="#">Imprensa</a>
+							<Link to="/cadastro">Cadastro</Link> {/*local tempporario*/}
 						</div>
 					)}
 				</div>
