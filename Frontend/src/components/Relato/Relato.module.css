@@ -1,0 +1,80 @@
+.relatoSection {
+  background-color: #6763B2;
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  margin-top: 60px;
+}
+
+
+.quote {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  color: #fff;
+}
+
+
+.author {
+  display: flex;
+  /*flex-direction:row;*/
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /*margin-left: 310px;*/
+}
+
+
+.avatar {
+  background-color: #e6e6e6;
+  color: #333;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+
+.info strong {
+  font-weight: 600;
+ 
+}
+
+
+.info span {
+  font-size: 0.8rem;
+  color: #d1d1d1;
+}

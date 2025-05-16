@@ -1,0 +1,90 @@
+.container {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.titulo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.subtitulo {
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+  gap: 4rem;
+}
+
+.card {
+  border: 1px solid #ccc;
+  background: white;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.imagem {
+  height: 270px;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conteudo {
+  padding: 1rem;
+  text-align: left;
+}
+
+.cardTitulo {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.cardDescricao {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background-color: #f1f1f1;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
+
+.link {
+  font-size: 0.9rem;
+  color: #000;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.seta {
+  margin-left: 0.3rem;
+  font-size: 1.2rem;
+}

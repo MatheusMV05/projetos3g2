@@ -1,0 +1,42 @@
+.container {
+  background-color: #0a0a0a;
+  padding: 7rem 2rem;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.icone {
+  font-size: 2rem;
+  color: white;
+}
+
+.titulo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.descricao {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.link {
+  color: white;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
