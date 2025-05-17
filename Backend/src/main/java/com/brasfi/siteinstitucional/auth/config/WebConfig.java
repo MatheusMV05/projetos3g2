@@ -1,4 +1,4 @@
-package com.brasfi.siteinstitucional.config;
+package com.brasfi.siteinstitucional.auth.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
