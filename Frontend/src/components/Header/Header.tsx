@@ -60,7 +60,7 @@ const Header: React.FC = () => {
 					</a>
 					{showDropdown && (
 						<div className={styles.dropdownMenu}>
-							<a href="#">Últimas notícias</a>
+							<Link to="/noticias">Últimas notícias</Link>
 							<a href="#">Blog</a>
 							<a href="#">Imprensa</a>
 							<Link to="/cadastro">Cadastro</Link> {/*local tempporario*/}
