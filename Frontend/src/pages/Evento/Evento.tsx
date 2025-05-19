@@ -13,13 +13,28 @@ const Evento: React.FC = () => {
 				<br />
 			</p>
 
-			<div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>
+			{/* Layout com grid ajustado */}
+			<div
+				style={{
+					display: 'grid',
+					gridTemplateColumns: '700px 1fr', // largura fixa para o card principal
+					columnGap: '2rem', // distância ajustada entre colunas
+					alignItems: 'start',
+				}}
+			>
 				{/* Evento em destaque */}
-				<div style={{ border: '1px solid #ccc', borderRadius: '4px', background: '#f9f9f9' }}>
+				<div
+					style={{
+						border: '1px solid #000000',
+						borderRadius: '4px',
+						background: '#f9f9f9',
+						overflow: 'hidden',
+					}}
+				>
 					<div
 						style={{
-							height: '200px',
-							background: '#e0e0e0',
+							height: '300px',
+							background: '#ddd',
 							position: 'relative',
 							display: 'flex',
 							justifyContent: 'center',
@@ -32,31 +47,29 @@ const Evento: React.FC = () => {
 								top: '1rem',
 								right: '1rem',
 								background: '#fff',
-								padding: '0.5rem',
+								padding: '0.5rem 2.2rem',
 								textAlign: 'center',
-								fontWeight: 'bold',
-								fontSize: '0.85rem',
-								borderRadius: '4px',
-								border: '1px solid #ccc',
+								fontWeight: 'normal',
+								fontSize: '1rem',
 							}}
 						>
 							xxx<br />XX<br />xxx
 						</div>
 					</div>
-					<div style={{ padding: '1rem' }}>
+					<div style={{ padding: '1.2rem' }}>
 						<div
 							style={{
 								fontSize: '0.75rem',
 								fontWeight: 'bold',
 								background: '#ddd',
 								display: 'inline-block',
-								padding: '0.2rem 0.4rem',
+								padding: '0.2rem 0.6rem',
 								borderRadius: '3px',
 							}}
 						>
 							Categoria
 						</div>
-						<div style={{ fontWeight: 'bold', fontSize: '1.1rem', margin: '0.5rem 0' }}>
+						<div style={{ fontWeight: 'bold', fontSize: '1.1rem', margin: '1rem 0' }}>
 							Título do Evento
 						</div>
 						<div style={{ fontSize: '0.9rem' }}>
@@ -66,10 +79,10 @@ const Evento: React.FC = () => {
 							href="#"
 							style={{
 								display: 'inline-block',
-								marginTop: '0.5rem',
-								color: '#000',
+								marginTop: '1rem',
+								color: '#161616',
 								textDecoration: 'none',
-								fontWeight: 'bold',
+								fontWeight: 'normal',
 								fontSize: '0.85rem',
 							}}
 						>
@@ -79,7 +92,7 @@ const Evento: React.FC = () => {
 				</div>
 
 				{/* Lista lateral de eventos */}
-				<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
 					<EventHeader
 						weekday="xxx"
 						day="XX"
@@ -109,13 +122,8 @@ const Evento: React.FC = () => {
 			<br />
 			<br />
 
-			{/* BlogPostHeader */}
 			<BlogPostHeader />
-
-			{/* ProximosEventos */}
 			<ProximosEventos />
-
-			{/* Blog */}
 			<Blog />
 		</div>
 	);

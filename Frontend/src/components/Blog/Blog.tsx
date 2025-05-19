@@ -9,7 +9,7 @@ const Blog: React.FC = () => {
         <div className={styles.mainImage}>📷</div>
         <div className={styles.mainContent}>
           <span className={styles.mainCategory}>Sustentabilidade</span>
-          <h2 className={styles.mainTitle}>Lorem ipsum dolor sit amet consectetur adipiscing elit.</h2>
+          <h2 className={styles.mainTitle}>Explorando a Economia verde</h2>
           <p className={styles.mainDescription}>
             Lorem ipsum dolor sit amet consectetur adipiscing elit.
           </p>
@@ -23,10 +23,10 @@ const Blog: React.FC = () => {
       {/* Filtros simulados */}
       <div className={styles.filters}>
         <button>Ver todos</button>
-        <button>Categoria Um</button>
-        <button>Categoria Dois</button>
-        <button>Categoria Três</button>
-        <button>Categoria Quatro</button>
+        <h5>Categoria Um</h5>
+        <a>Categoria Dois</a>
+        <a>Categoria Três</a>
+        <a>Categoria Quatro</a>
       </div>
     <br></br>
     <br></br>
@@ -39,8 +39,7 @@ const Blog: React.FC = () => {
               <div className={styles.cardCategory}>Tag</div>
               <div className={styles.cardTitle}>Lorem ipsum dolor sit amet consectetur adipiscing elit.</div>
               <div className={styles.cardAuthor}>
-                <span>👤 <br></br></span>
-                <span>Lorem ipsum dolor sit amet consectetur adipiscing elit.</span>
+                <span>👤 Lorem ipsum dolor sit amet consectetur adipiscing elit.<br></br></span>
               </div>
             </div>
           </div>

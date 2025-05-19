@@ -1,14 +1,14 @@
 .blogSection {
   padding: 4rem 2rem;
+  background-color: #509D5E;
 }
 
 .mainHighlight {
   display: flex;
   gap: 2rem;
   border: 1px solid #ccc;
-  border-radius: 6px;
   padding: 2rem;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   margin-bottom: 2rem;
   flex-wrap: wrap;
 }
@@ -23,7 +23,6 @@
   align-items: center;
   color: #aaa;
   font-size: 2rem;
-  border-radius: 6px;
   flex: 1;
 }
 
@@ -36,23 +35,26 @@
 
 .mainCategory {
   font-size: 0.85rem;
-  color: #777;
+  color: #000000;
 }
 
 .mainTitle {
   font-size: 1.5rem;
   font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .mainDescription {
   font-size: 1rem;
-  color: #555;
+  color: #000000;
   margin-bottom: 1rem;
 }
 
 .mainAuthor {
   font-size: 0.85rem;
-  color: #666;
+  color: #000000;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -66,8 +68,8 @@
 }
 
 .filters button {
-  background: none;
-  border: none;
+  background-color: #ffffff;
+  border: normal;
   font-size: 0.9rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -76,13 +78,14 @@
 }
 
 .filters button:hover {
-  background-color: #eee;
+  background-color: #ffffff;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  justify-items: center;
 }
 
 .card {

@@ -6,6 +6,7 @@
   padding: 2rem 0;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #eee;
+  background-color: #F4B315;
 }
 
 .left {
@@ -21,7 +22,7 @@
 
 .backLink {
   font-size: 0.875rem;
-  color: #777;
+  color: #000000;
   margin-bottom: 0.5rem;
 }
 
@@ -34,7 +35,7 @@
 
 .details {
   font-size: 1rem;
-  color: #444;
+  color: #000000;
   margin-bottom: 2rem;
 }
 
@@ -58,11 +59,10 @@
   width: 100%;
   max-width: 500px;
   height: 300px;
-  background: #ddd;
+  background: #dddddd;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
   color: #999;
-  border-radius: 6px;
 }
