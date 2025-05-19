@@ -18,10 +18,10 @@ const BlogPostHeader: React.FC = () => {
 					Negócios
 				</h1>
 
-				<p className={styles.details}>11 Junho • 19h • Porto Digital</p>
+				<p className={styles.details}>Lorem ipsum dolor sit amet consectetur.</p>
 
 				<div className={styles.share}>
-					<p className={styles.shareLabel}>Compartilhe este post</p>
+					<p className={styles.shareLabel}>Lorem ipsum dolor.</p>
 					<div className={styles.icons}>
 						<a href="#">
 							<LuLink />
@@ -40,7 +40,11 @@ const BlogPostHeader: React.FC = () => {
 			</div>
 
 			<div className={styles.right}>
-				<div className={styles.imagePlaceholder}>📷</div>
+				<div className={styles.imagePlaceholder}>
+					<a href="/PlaceholderImage.svg" target="_blank" rel="noopener noreferrer">
+					<img src="/PlaceholderImage.svg" alt="PlaceHolder" />
+					</a>
+				</div>
 			</div>
 		</section>
 	);

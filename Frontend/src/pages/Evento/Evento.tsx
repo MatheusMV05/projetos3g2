@@ -49,7 +49,7 @@ const Evento: React.FC = () => {
 								background: '#fff',
 								padding: '0.5rem 2.2rem',
 								textAlign: 'center',
-								fontWeight: 'normal',
+								fontWeight: 'bold',
 								fontSize: '1rem',
 							}}
 						>
@@ -72,7 +72,7 @@ const Evento: React.FC = () => {
 						<div style={{ fontWeight: 'bold', fontSize: '1.1rem', margin: '1rem 0' }}>
 							Título do Evento
 						</div>
-						<div style={{ fontSize: '0.9rem' }}>
+						<div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
 							Lorem ipsum dolor sit amet consectetur adipiscing elit.
 						</div>
 						<a
@@ -86,13 +86,13 @@ const Evento: React.FC = () => {
 								fontSize: '0.85rem',
 							}}
 						>
-							Ver evento →
+							Ver evento &gt;
 						</a>
 					</div>
 				</div>
 
 				{/* Lista lateral de eventos */}
-				<div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', fontWeight: 'bold' }}>
 					<EventHeader
 						weekday="xxx"
 						day="XX"

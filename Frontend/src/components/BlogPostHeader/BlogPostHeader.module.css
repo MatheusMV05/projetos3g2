@@ -10,11 +10,11 @@
 }
 
 .left {
-  flex: 1;
+  flex: 2;
 }
 
 .right {
-  flex: 1;
+  flex: 5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,31 +23,38 @@
 .backLink {
   font-size: 0.875rem;
   color: #000000;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
+  margin-left: 3rem;
 }
 
 .title {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 110%;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
+  margin-left: 3rem;
 }
 
 .details {
   font-size: 1rem;
   color: #000000;
   margin-bottom: 2rem;
+  margin-left: 3rem;
 }
 
 .shareLabel {
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
+  margin-left: 3rem;
 }
 
 .icons {
   display: flex;
   gap: 12px;
   font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  margin-left: 3rem;
 }
 
 .icons a {
@@ -58,7 +65,8 @@
 .imagePlaceholder {
   width: 100%;
   max-width: 500px;
-  height: 300px;
+  height: 200px;
+  margin-top: 7.8rem;
   background: #dddddd;
   display: flex;
   justify-content: center;

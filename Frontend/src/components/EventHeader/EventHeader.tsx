@@ -31,7 +31,7 @@ export const EventHeader: React.FC<EventHeaderProps> = ({
 					{category && <span className={styles.category}>{category}</span>}
 				</div>
 				<div className={styles.location}>{location}</div>
-				<a href="#">Ver evento →</a>
+				<a href="#">Ver evento &gt;</a>
 			</div>
 		</div>
 	);
