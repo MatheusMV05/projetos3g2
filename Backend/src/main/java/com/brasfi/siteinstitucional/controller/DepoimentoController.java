@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/depoimentos")
-public class DepoimentoControllerTest{
+public class DepoimentoController{
 
     @Autowired
     private DepoimentoService depoimentoService;
