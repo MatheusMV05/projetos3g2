@@ -1,6 +1,6 @@
 package com.brasfi.siteinstitucional.repository;
 
-import com.brasfi.siteinstitucional.model.Pagina;
+import com.brasfi.siteinstitucional.entity.Pagina;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

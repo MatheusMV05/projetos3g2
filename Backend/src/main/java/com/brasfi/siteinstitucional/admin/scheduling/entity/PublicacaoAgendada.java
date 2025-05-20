@@ -1,28 +1,43 @@
-package com.brasfi.siteinstitucional.model;
+package com.brasfi.siteinstitucional.admin.scheduling.entity;
 
+import com.brasfi.siteinstitucional.auth.entity.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
-@Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pagina {
+@Entity
+@Table(name = "publicacoes_agendadas")
+public class PublicacaoAgendada {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String titulo;
+    private String tipoConteudo;
 
-    @Column(nullable = false, unique = true)
-    private String slug;
+    private Long conteudoId;
 
     @Column(columnDefinition = "TEXT")
-    private String conteudo;
+    private String conteudoJson;
+
+    @Column(nullable = false)
+    private LocalDateTime dataPublicacao;
+
+    @Column(nullable = false)
+    private boolean publicado = false;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     private LocalDateTime dataCriacao;
 
