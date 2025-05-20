@@ -6,6 +6,8 @@ import com.brasfi.siteinstitucional.exception.ResourceNotFoundException;
 import com.brasfi.siteinstitucional.model.Pagina;
 import com.brasfi.siteinstitucional.repository.GovernancaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+
 import java.util.List;
 
 public class GovernancaService {
@@ -13,15 +15,18 @@ public class GovernancaService {
     @Autowired
     private GovernancaRepository governancaRepository;
 
+    @Cacheable("governancas")
     public List<Governanca> listarTodas(){
         return governancaRepository.findAll();
     }
 
+    @Cacheable(value = "governancaPorId", key = "#id")
     public Governanca buscarPorId(Long id){
         return governancaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Governança não encontrada com o id: " + id));
     }
 
+    @Cacheable(value = "governancaPorSlug", key = "#slug")
     public Governanca buscarPorSlug(String slug) {
         return governancaRepository.findBySlug(slug)
                 .orElseThrow(() -> new ResourceNotFoundException("Governança não encontrada com o slug: " + slug));

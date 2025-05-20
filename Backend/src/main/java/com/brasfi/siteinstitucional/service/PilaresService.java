@@ -6,6 +6,7 @@ import com.brasfi.siteinstitucional.entity.Pilares;
 import com.brasfi.siteinstitucional.exception.ResourceNotFoundException;
 import com.brasfi.siteinstitucional.repository.PilaresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -15,15 +16,18 @@ public class PilaresService {
     @Autowired
     private PilaresRepository pilaresRepository;
 
+    @Cacheable("pilares")
     public List<Pilares> listarTodos(){
         return pilaresRepository.findAll();
     }
 
+    @Cacheable(value = "pilaresPorId", key = "#id")
     public Pilares buscarPorId(Long id){
         return pilaresRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Página de pilares não encontrada com o id: " + id));
     }
 
+    @Cacheable(value = "pilarPorSlug", key = "#slug")
     public Pilares buscarPorSlug(String slug) {
         return pilaresRepository.findBySlug(slug)
                 .orElseThrow(() -> new ResourceNotFoundException("Pilar não encontrado com o slug: " + slug));

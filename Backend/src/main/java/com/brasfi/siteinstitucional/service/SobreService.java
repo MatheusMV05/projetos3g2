@@ -6,6 +6,7 @@ import com.brasfi.siteinstitucional.entity.Sobre;
 import com.brasfi.siteinstitucional.exception.ResourceNotFoundException;
 import com.brasfi.siteinstitucional.repository.SobreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -15,15 +16,18 @@ public class SobreService {
     @Autowired
     private SobreRepository sobreRepository;
 
+    @Cacheable("sobres")
     public List<Sobre> listarTodos(){
         return sobreRepository.findAll();
     }
 
+    @Cacheable(value = "sobresPorId", key = "#id")
     public Sobre buscarPorId(Long id){
         return sobreRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Página sobre não encontrada com o id: " + id));
     }
 
+    @Cacheable(value = "sobrePorSlug", key = "#slug")
     public Sobre buscarPorSlug(String slug) {
         return sobreRepository.findBySlug(slug)
                 .orElseThrow(() -> new ResourceNotFoundException(" 'Pilar' não encontrado com o slug: " + slug));

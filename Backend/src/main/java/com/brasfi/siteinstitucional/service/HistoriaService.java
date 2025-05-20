@@ -6,6 +6,7 @@ import com.brasfi.siteinstitucional.entity.Historia;
 import com.brasfi.siteinstitucional.exception.ResourceNotFoundException;
 import com.brasfi.siteinstitucional.repository.HistoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -15,15 +16,18 @@ public class HistoriaService {
     @Autowired
     private HistoriaRepository historiaRepository;
 
+    @Cacheable("historias")
     public List<Historia> listarTodas(){
         return historiaRepository.findAll();
     }
 
+    @Cacheable(value = "historiaPorId", key = "#id")
     public Historia buscarPorId(Long id){
         return historiaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Página de história não encontrada com o id: " + id));
     }
 
+    @Cacheable(value = "historiaPorSlug", key = "#slug")
     public Historia buscarPorSlug(String slug) {
         return historiaRepository.findBySlug(slug)
                 .orElseThrow(() -> new ResourceNotFoundException("História não encontrada com o slug: " + slug));
