@@ -8,7 +8,6 @@ import com.lowagie.text.Document;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Font;
-import com.lowagie.text.BaseColor;
 import com.lowagie.text.Element;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.FontFactory;
@@ -23,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.Color; // Usando java.awt.Color em vez de BaseColor
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.time.LocalDateTime;
@@ -38,6 +38,13 @@ import java.util.stream.Stream;
 public class RelatorioPdfService {
 
     private final MetricaRepository metricaRepository;
+
+    // Definindo cores usadas no relatório
+    private static final Color COR_AZUL_BRASFI = new Color(30, 65, 160);
+    private static final Color COR_TEXTO_NORMAL = Color.BLACK;
+    private static final Color COR_TEXTO_BRANCO = Color.WHITE;
+    private static final Color COR_BORDA_TABELA = Color.LIGHT_GRAY;
+    private static final Color COR_RODAPE = Color.DARK_GRAY;
 
     @Transactional(readOnly = true)
     public ByteArrayInputStream gerarRelatorioPdf(MetricaFiltroDTO filtro) {
@@ -122,9 +129,10 @@ public class RelatorioPdfService {
 
             document.open();
 
-            Font tituloFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK); // Revertido para BaseColor.BLACK
-            Font subtituloFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK); // Revertido para BaseColor.BLACK
-            Font regularFont = FontFactory.getFont(FontFactory.HELVETICA, 10, BaseColor.BLACK);   // Revertido para BaseColor.BLACK
+            // Usando FontFactory com java.awt.Color
+            Font tituloFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16, COR_TEXTO_NORMAL);
+            Font subtituloFont = FontFactory.getFont(FontFactory.HELVETICA, 12, COR_TEXTO_NORMAL);
+            Font regularFont = FontFactory.getFont(FontFactory.HELVETICA, 10, COR_TEXTO_NORMAL);
 
             Paragraph titulo = new Paragraph(relatorio.getTitulo(), tituloFont);
             titulo.setAlignment(Element.ALIGN_CENTER);
@@ -177,12 +185,12 @@ public class RelatorioPdfService {
     }
 
     private void addTableHeader(PdfPTable table) {
-        Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.WHITE); // Revertido para BaseColor.WHITE
+        Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, COR_TEXTO_BRANCO);
 
         Stream.of("Nome", "Valor", "Descrição", "Data Referência")
                 .forEach(columnTitle -> {
                     PdfPCell header = new PdfPCell();
-                    header.setBackgroundColor(new BaseColor(30, 65, 160)); // Revertido para new BaseColor
+                    header.setBackgroundColor(COR_AZUL_BRASFI);
                     header.setBorderWidth(1);
                     header.setPadding(5);
                     header.setPhrase(new Phrase(columnTitle, headerFont));
@@ -192,7 +200,7 @@ public class RelatorioPdfService {
     }
 
     private void addTableData(PdfPTable table, List<Map<String, Object>> data) {
-        Font cellFont = FontFactory.getFont(FontFactory.HELVETICA, 9, BaseColor.BLACK); // Revertido para BaseColor.BLACK
+        Font cellFont = FontFactory.getFont(FontFactory.HELVETICA, 9, COR_TEXTO_NORMAL);
 
         for (Map<String, Object> row : data) {
             table.addCell(createCell(row.get("nome").toString(), cellFont));
@@ -206,7 +214,7 @@ public class RelatorioPdfService {
         PdfPCell cell = new PdfPCell(new Phrase(content, font));
         cell.setPadding(5);
         cell.setBorderWidth(0.5f);
-        cell.setBorderColor(BaseColor.LIGHT_GRAY); // Revertido para BaseColor.LIGHT_GRAY
+        cell.setBorderColor(COR_BORDA_TABELA);
         return cell;
     }
 
@@ -220,7 +228,7 @@ public class RelatorioPdfService {
         @Override
         public void onEndPage(PdfWriter writer, Document document) {
             PdfContentByte cb = writer.getDirectContent();
-            Font footerFont = FontFactory.getFont(FontFactory.HELVETICA, 8, BaseColor.DARK_GRAY); // Revertido para BaseColor.DARK_GRAY
+            Font footerFont = FontFactory.getFont(FontFactory.HELVETICA, 8, COR_RODAPE);
 
             String textoRodape = "Página " + writer.getPageNumber() + " | BrasFi - " +
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
