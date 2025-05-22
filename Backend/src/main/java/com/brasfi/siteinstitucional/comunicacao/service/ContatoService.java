@@ -1,6 +1,7 @@
 package com.brasfi.siteinstitucional.comunicacao.service;
 
 import com.brasfi.siteinstitucional.admin.annotation.Auditavel;
+import com.brasfi.siteinstitucional.admin.notification.publisher.NotificacaoPublisher;
 import com.brasfi.siteinstitucional.auth.entity.Usuario;
 import com.brasfi.siteinstitucional.comunicacao.dto.MensagemDTO;
 import com.brasfi.siteinstitucional.comunicacao.dto.RespostaContatoDTO;
@@ -26,6 +27,7 @@ public class ContatoService {
     private final MensagemRepository mensagemRepository;
     private final EmailService emailService;
     private final RecaptchaService recaptchaService;
+    private final NotificacaoPublisher notificacaoPublisher;
 
     @Auditavel(acao = "CRIAR", entidade = "MENSAGEM_CONTATO")
     public Mensagem registrarMensagem(MensagemDTO mensagemDTO) {
@@ -41,7 +43,9 @@ public class ContatoService {
                 .mensagem(mensagemDTO.getMensagem())
                 .build();
 
-        // Notificar administradores (poderia ser implementado como um EventListener)
+        Mensagem mensagemSalva = mensagemRepository.save(mensagem);
+
+        // Notificar administradores por email
         try {
             emailService.enviarEmailSimples(
                     "admin@brasfi.com.br",
@@ -50,10 +54,18 @@ public class ContatoService {
                             "Mensagem: " + mensagemDTO.getMensagem()
             );
         } catch (Exception e) {
-            log.error("Erro ao enviar notificação de nova mensagem: {}", e.getMessage(), e);
+            log.error("Erro ao enviar notificação de nova mensagem por email: {}", e.getMessage(), e);
         }
 
-        return mensagemRepository.save(mensagem);
+        // Notificar administradores pelo sistema de notificações
+        notificacaoPublisher.publicarParaAdmins(
+                "Nova mensagem de contato",
+                "De: " + mensagemDTO.getNome() + " (" + mensagemDTO.getEmail() + ")\nAssunto: " + mensagemDTO.getAssunto(),
+                "INFO",
+                "/admin/contato/" + mensagemSalva.getId()
+        );
+
+        return mensagemSalva;
     }
 
     public Page<Mensagem> listarMensagens(
