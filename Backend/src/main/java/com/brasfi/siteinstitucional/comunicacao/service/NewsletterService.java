@@ -1,6 +1,7 @@
 package com.brasfi.siteinstitucional.comunicacao.service;
 
 import com.brasfi.siteinstitucional.admin.annotation.Auditavel;
+import com.brasfi.siteinstitucional.admin.notification.publisher.NotificacaoPublisher;
 import com.brasfi.siteinstitucional.comunicacao.dto.AssinanteDTO;
 import com.brasfi.siteinstitucional.comunicacao.dto.NewsletterDTO;
 import com.brasfi.siteinstitucional.comunicacao.entity.Assinante;
@@ -29,6 +30,7 @@ public class NewsletterService {
     private final NewsletterRepository newsletterRepository;
     private final EmailService emailService;
     private final RecaptchaService recaptchaService;
+    private final NotificacaoPublisher notificacaoPublisher;
 
     @Auditavel(acao = "INSCREVER", entidade = "ASSINANTE_NEWSLETTER")
     public Assinante inscrever(AssinanteDTO assinanteDTO) {
@@ -76,6 +78,15 @@ public class NewsletterService {
             log.error("Erro ao enviar email de confirmação: {}", e.getMessage(), e);
         }
 
+        // Notificar administradores
+        notificacaoPublisher.publicarParaAdmins(
+                "Novo assinante da newsletter",
+                "Email: " + assinante.getEmail() +
+                        (assinante.getNome() != null ? "\nNome: " + assinante.getNome() : ""),
+                "INFO",
+                "/admin/newsletter/assinantes"
+        );
+
         return assinanteSalvo;
     }
 
@@ -87,6 +98,15 @@ public class NewsletterService {
         assinante.setAtivo(false);
         assinante.setDataDesativacao(LocalDateTime.now());
         assinanteRepository.save(assinante);
+
+        // Notificar administradores
+        notificacaoPublisher.publicarParaAdmins(
+                "Cancelamento de assinatura da newsletter",
+                "Email: " + assinante.getEmail() +
+                        (assinante.getNome() != null ? "\nNome: " + assinante.getNome() : ""),
+                "WARNING",
+                "/admin/newsletter/assinantes"
+        );
     }
 
     public Page<Assinante> listarAssinantes(Boolean ativo, Pageable pageable) {
@@ -151,10 +171,31 @@ public class NewsletterService {
             newsletter.setDataEnvio(LocalDateTime.now());
             newsletter.setQuantidadeDestinatarios(emails.size());
 
+            // Notificar o usuário que criou a newsletter
+            notificacaoPublisher.publicarParaUsuario(
+                    newsletter.getUsuarioId(),
+                    "Newsletter enviada com sucesso",
+                    "Sua newsletter \"" + newsletter.getAssunto() + "\" foi enviada para "
+                            + emails.size() + " assinantes.",
+                    "SUCCESS",
+                    "/admin/newsletter/" + newsletter.getId()
+            );
+
             return newsletterRepository.save(newsletter);
 
         } catch (Exception e) {
             log.error("Erro ao enviar newsletter: {}", e.getMessage(), e);
+
+            // Notificar erro ao usuário que criou a newsletter
+            notificacaoPublisher.publicarParaUsuario(
+                    newsletter.getUsuarioId(),
+                    "Erro ao enviar newsletter",
+                    "Ocorreu um erro ao enviar sua newsletter \"" + newsletter.getAssunto() + "\": "
+                            + e.getMessage(),
+                    "ERROR",
+                    "/admin/newsletter/" + newsletter.getId()
+            );
+
             throw new RuntimeException("Erro ao enviar newsletter: " + e.getMessage());
         }
     }
