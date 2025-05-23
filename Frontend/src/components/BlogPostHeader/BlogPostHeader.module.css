@@ -61,6 +61,18 @@
 .icons a {
   color: #000;
   text-decoration: none;
+
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 2px;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.icons a:hover {
+  transform: scale(1.1);
 }
 
 .imagePlaceholder {

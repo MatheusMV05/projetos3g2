@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Blog.module.css';
+import styles from './blogwhite.module.css';
 
-const Blog: React.FC = () => {
+const Blogwhite: React.FC = () => {
   return (
     <section className={styles.blogSection}>
       {/* Destaque principal */}
@@ -56,4 +56,4 @@ const Blog: React.FC = () => {
   );
 };
 
-export default Blog;
+export default Blogwhite;

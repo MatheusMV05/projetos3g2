@@ -1,17 +1,15 @@
 import React from 'react';
 import NoticiasIntro from '../../components/NoticiasIntro/NoticiasIntro';
-import Blog from '../../components/Blog/Blog';
 import Recursos from '../../components/Recursos/Recursos'; // <-- importado aqui
+import Blogwhite from '../../components/NoticiasIntro/blogwhite';
 
 const Noticias: React.FC = () => {
 	return (
-		<div style={{ backgroundColor: '#fff', padding: '2rem' }}>
-			<h1>Notícias</h1>
-			<p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+		<div style={{ backgroundColor: '#ffffff', padding: '2rem' }}>
 			
 			<NoticiasIntro />
-			<Blog />
-			<Recursos /> {/* <-- adicionado aqui */}
+			<Blogwhite/>
+			<Recursos />
 		</div>
 	);
 };

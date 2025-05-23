@@ -5,7 +5,13 @@ const NoticiasIntro: React.FC = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.card}>
-				<div className={styles.image}></div>
+				<div className={styles.image}>
+					<div className={styles.imagePlaceholder}>
+						<a href="/PlaceholderImage.svg" target="_blank" rel="noopener noreferrer">
+						<img src="/PlaceholderImage.svg" alt="PlaceHolder" />
+						</a>
+					</div>
+				</div>
 				<div className={styles.info}>
 					<div className={styles.tags}>
 						<span className={styles.tag}>Sustentabilidade</span>
@@ -16,13 +22,19 @@ const NoticiasIntro: React.FC = () => {
 						Lorem ipsum dolor sit amet consectetur adipiscing elit.
 					</p>
 					<a href="#" className={styles.readMore}>
-						Leia mais →
+						Leia mais &gt;
 					</a>
 				</div>
 			</div>
 
 			<div className={styles.card}>
-				<div className={styles.image}></div>
+				<div className={styles.image}>
+					<div className={styles.imagePlaceholder}>
+						<a href="/PlaceholderImage.svg" target="_blank" rel="noopener noreferrer">
+						<img src="/PlaceholderImage.svg" alt="PlaceHolder" />
+						</a>
+					</div>
+				</div>
 				<div className={styles.info}>
 					<div className={styles.tags}>
 						<span className={styles.tag}>Inovação</span>
@@ -33,7 +45,7 @@ const NoticiasIntro: React.FC = () => {
 						Lorem ipsum dolor sit amet consectetur adipiscing elit.
 					</p>
 					<a href="#" className={styles.readMore}>
-						Leia mais →
+						Leia mais &gt;
 					</a>
 				</div>
 			</div>

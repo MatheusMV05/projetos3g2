@@ -21,7 +21,7 @@ const Recursos: React.FC = () => {
 							<div className={styles.authorIcon}></div>
 							<div>
 								<strong>Lorem ipsum</strong>
-								<p className={styles.meta}>11 Jan 2022 • 5 min read</p>
+								<p className={styles.meta}>11 Jan • 5 min</p>
 							</div>
 						</div>
 					</div>
@@ -38,7 +38,7 @@ const Recursos: React.FC = () => {
 							<div className={styles.authorIcon}></div>
 							<div>
 								<strong>Lorem ipsum</strong>
-								<p className={styles.meta}>11 Jan 2022 • 5 min read</p>
+								<p className={styles.meta}>11 Jan • 5 min</p>
 							</div>
 						</div>
 					</div>
@@ -55,7 +55,7 @@ const Recursos: React.FC = () => {
 							<div className={styles.authorIcon}></div>
 							<div>
 								<strong>Lorem ipsum</strong>
-								<p className={styles.meta}>11 Jan 2022 • 5 min read</p>
+								<p className={styles.meta}>11 Jan • 5 min</p>
 							</div>
 						</div>
 					</div>
