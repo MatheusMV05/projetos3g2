@@ -35,5 +35,8 @@ public class Evento {
     @Column(nullable = false)
     private String local;
 
+    // Nova coluna para capacidade máxima
+    @Column(name = "capacidade_maxima")
+    private Integer capacidadeMaxima; // Pode ser null se não houver limite
 
 }
