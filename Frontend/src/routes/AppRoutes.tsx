@@ -6,7 +6,6 @@ import TrabalheConosco from '../pages/TrabalheConosco/TrabalheConosco';
 import Evento from '../pages/Evento/Evento';
 import Servicos from '../pages/Servicos/Servicos';
 import Sobre from '../pages/Sobre/Sobre';
-import Cadastro from '../pages/Cadastro/Cadastro';
 import Noticias from '../pages/Noticias/Noticias';
 
 const AppRoutes: React.FC = () => {
@@ -18,7 +17,6 @@ const AppRoutes: React.FC = () => {
 				<Route path="/evento" element={<Evento />} />
 				<Route path="/servicos" element={<Servicos />} />
 				<Route path="/sobre" element={<Sobre />} />
-				<Route path="/cadastro" element={<Cadastro />} />
 				<Route path="/noticias" element={<Noticias />} />
 			</Route>
 		</Routes>
