@@ -1,7 +1,8 @@
 import React from 'react';
 import NoticiasIntro from '../../components/NoticiasIntro/NoticiasIntro';
-import Recursos from '../../components/Recursos/Recursos'; // <-- importado aqui
-import Blogwhite from '../../components/NoticiasIntro/blogwhite';
+import Blogwhite from '../../components/NoticiasIntro/Blogwhite';
+import Recursos from '../../components/Recursos/Recursos';
+import Conteudo from '../../components/Conteudo/Conteudo';
 
 const Noticias: React.FC = () => {
 	return (
@@ -10,6 +11,7 @@ const Noticias: React.FC = () => {
 			<NoticiasIntro />
 			<Blogwhite/>
 			<Recursos />
+			<Conteudo />
 		</div>
 	);
 };
