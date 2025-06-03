@@ -1,0 +1,40 @@
+.sidebar {
+  height: calc(100vh - 64px); /* altura da header */
+  background-color: #f8f9fa;
+  position: relative;
+  transition: width 0.1s ease;
+  overflow: hidden;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar-content {
+  padding: 1rem;
+}
+
+.sidebar-title {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 0.5rem 0;
+  color: #333;
+  text-decoration: none;
+}
+
+.sidebar-nav a.active,
+.sidebar-nav a:hover {
+  color: #0077cc;
+  font-weight: bold;
+}
+
+.resizer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  cursor: ew-resize;
+  background-color: transparent;
+}
