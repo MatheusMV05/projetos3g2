@@ -7,18 +7,20 @@ const BlogPostHeader: React.FC = () => {
 	return (
 		<section className={styles.blogPostHeader}>
 			<div className={styles.left}>
-				<div className={styles.backLink}>Eventos &gt;</div>
+				<div className={styles.backLink}>Lorem ipsum &gt;</div>
 				<h1 className={styles.title}>
-					Como Finanças
+					Lorem ipsum
 					<br />
-					Sustentáveis
+					dolor sit
 					<br />
-					Transforma
+					amet
 					<br />
-					Negócios
+					consectetur
 				</h1>
 
-				<p className={styles.details}>Lorem ipsum dolor sit amet consectetur.</p>
+				<p className={styles.details}>
+					Lorem ipsum dolor sit amet consectetur.
+				</p>
 
 				<div className={styles.share}>
 					<p className={styles.shareLabel}>Lorem ipsum dolor.</p>
@@ -41,8 +43,12 @@ const BlogPostHeader: React.FC = () => {
 
 			<div className={styles.right}>
 				<div className={styles.imagePlaceholder}>
-					<a href="/PlaceholderImage.svg" target="_blank" rel="noopener noreferrer">
-					<img src="/PlaceholderImage.svg" alt="PlaceHolder" />
+					<a
+						href="/PlaceholderImage.svg"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img src="/PlaceholderImage.svg" alt="PlaceHolder" />
 					</a>
 				</div>
 			</div>

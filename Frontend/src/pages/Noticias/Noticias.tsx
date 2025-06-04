@@ -11,7 +11,6 @@ const Noticias: React.FC = () => {
 			<NoticiasIntro />
 			<Blogwhite/>
 			<Recursos />
-			<Conteudo />
 		</div>
 	);
 };

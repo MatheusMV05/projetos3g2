@@ -13,9 +13,9 @@ interface Course {
 const mockCourses: Course[] = [
 	{
 		id: 1,
-		title: 'Introdução às Finanças Sustentáveis',
+		title: 'Lorem ipsum dolor sit amet consectetur',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-		category: 'Educação',
+		category: 'Lorem',
 		readTime: '5 min read',
 	},
 ];
@@ -25,9 +25,9 @@ const SustainableFinanceCourses: React.FC = () => {
 
 	return (
 		<div className={styles.container}>
-			<h1 className={styles.title}>Cursos em Finanças Sustentáveis</h1>
+			<h1 className={styles.title}>Lorem ipsum dolor sit amet</h1>
 			<p className={styles.subtitle}>
-				Descubra cursos que transformam sua carreira financeira
+				Lorem ipsum dolor sit amet consectetur adipiscing elit.
 			</p>
 
 			{mockCourses.map((course) => (
@@ -44,7 +44,7 @@ const SustainableFinanceCourses: React.FC = () => {
 						<p className={styles.description}>{course.description}</p>
 
 						<a href="#" className={styles.readMore}>
-							Leia mais &rarr;
+							Lorem ipsum &rarr;
 						</a>
 					</div>
 				</div>
@@ -54,7 +54,7 @@ const SustainableFinanceCourses: React.FC = () => {
 				className={styles.viewAllButton}
 				onClick={() => navigate('/cursos')}
 			>
-				Ver todos
+				Lorem ipsum
 			</button>
 		</div>
 	);

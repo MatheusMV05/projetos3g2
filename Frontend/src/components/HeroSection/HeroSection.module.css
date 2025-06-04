@@ -20,6 +20,7 @@ h1 {
   font-weight: 700;
   margin-bottom: 20px;
   line-height: 1.2;
+  margin-left: 4.5%;
 }
 
 p {
@@ -27,6 +28,7 @@ p {
   line-height: 1.6;
   margin-bottom: 30px;
   max-width: 75%;
+  margin-left: 4.5%;
 }
 
 .buttons {

@@ -30,7 +30,7 @@ const Partners: React.FC = () => {
 			viewport={{ once: true, amount: 0.3 }}
 		>
 			<motion.h2 className={styles.title} variants={itemVariants}>
-				Nossos parceiros
+				Lorem ipsum dolor sit amet
 			</motion.h2>
 
 			<motion.div className={styles.logos} variants={itemVariants}>

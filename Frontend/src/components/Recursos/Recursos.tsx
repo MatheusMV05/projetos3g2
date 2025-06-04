@@ -4,7 +4,7 @@ import styles from './Recursos.module.css';
 const Recursos: React.FC = () => {
 	return (
 		<div className={styles.container}>
-			<h2 className={styles.title}>Recursos para Aprendizado</h2>
+			<h2 className={styles.title}>Lorem ipsum dolor sit amet</h2>
 			<div className={styles.subtitle}>
 				Lorem ipsum dolor sit amet consectetur
 			</div>
@@ -62,7 +62,7 @@ const Recursos: React.FC = () => {
 				</div>
 			</div>
 
-			<button className={styles.button}>Ver todos</button>
+			<button className={styles.button}>Lorem ipsum</button>
 		</div>
 	);
 };

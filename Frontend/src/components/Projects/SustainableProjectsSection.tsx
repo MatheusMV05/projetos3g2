@@ -1,55 +1,48 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import ProjectsGrid from './ProjectsGrid';
+import ProjectCard from './ProjectCard';
 import styles from './SustainableProjectsSection.module.css';
 
 const allProjects = [
 	{
-		title: 'Projeto Verde',
+		title: 'Lorem Ipsum',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Energia'],
+		tags: ['Lorem'],
 		image: 'https://via.placeholder.com/300x200',
 	},
 	{
-		title: 'Iniciativa Azul',
+		title: 'Lorem Ipsum',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Água'],
+		tags: ['Ipsum'],
 		image: 'https://via.placeholder.com/300x200',
 	},
 	{
-		title: 'Cidade Sustentável',
+		title: 'Lorem Ipsum',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Urbanismo'],
+		tags: ['Dolor'],
 		image: 'https://via.placeholder.com/300x200',
 	},
 	{
-		title: 'Projeto Solar',
+		title: 'Lorem Ipsum',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Energia'],
+		tags: ['Lorem'],
 		image: 'https://via.placeholder.com/300x200',
 	},
 	{
-		title: 'Amazônia Viva',
+		title: 'Lorem Ipsum',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Conservação'],
+		tags: ['Ipsum'],
 		image: 'https://via.placeholder.com/300x200',
 	},
 	{
-		title: 'Reuso Inteligente',
+		title: 'Lorem Ipsum',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Água', 'Reciclagem'],
+		tags: ['Ipsum', 'Dolor'],
 		image: 'https://via.placeholder.com/300x200',
 	},
 ];
 
-const categories = [
-	'Todos',
-	'Energia',
-	'Água',
-	'Urbanismo',
-	'Conservação',
-	'Reciclagem',
-];
+const categories = ['Todos', 'Lorem', 'Ipsum', 'Dolor', 'Sit', 'Amet'];
 
 const SustainableProjectsSection: React.FC = () => {
 	const [selectedCategory, setSelectedCategory] = useState('Todos');
@@ -68,8 +61,8 @@ const SustainableProjectsSection: React.FC = () => {
 				transition={{ duration: 0.6 }}
 				viewport={{ once: true }}
 			>
-				<h2>Nossos Projetos Sustentáveis</h2>
-				<p>Explore nossos projetos em andamento e concluídos.</p>
+				<h2>Lorem ipsum dolor sit amet consectetur</h2>
+				<p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
 			</motion.div>
 
 			<div className={styles.filters}>
@@ -95,7 +88,7 @@ const SustainableProjectsSection: React.FC = () => {
 				transition={{ delay: 0.2 }}
 				viewport={{ once: true }}
 			>
-				<button className={styles.viewAllButton}>Ver todos</button>
+				<button className={styles.viewAllButton}>Lorem ipsum</button>
 			</motion.div>
 		</section>
 	);

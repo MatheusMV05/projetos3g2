@@ -19,13 +19,13 @@ const AltTestimonial: React.FC = () => {
 				<div className={styles.stars}>★★★★★</div>
 				<blockquote>
 					<p>
-						"Os projetos que realizamos não apenas transformaram nossa empresa,
-						mas também impactaram positivamente a comunidade ao nosso redor."
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit
+						amet metus a nulla suscipit bibendum."
 					</p>
 				</blockquote>
 				<div className={styles.author}>
-					<strong>Ana Silva</strong>
-					<span>Gerente, EcoCorp</span>
+					<strong>Lorem Ipsum</strong>
+					<span>Lorem Ipsum, Dolor Sit</span>
 				</div>
 			</div>
 		</motion.div>

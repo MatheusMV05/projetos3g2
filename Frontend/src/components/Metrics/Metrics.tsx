@@ -6,18 +6,18 @@ import { useEffect, useRef, useState } from 'react';
 const metrics = [
 	{
 		value: 30,
-		title: 'Crescimento Sustentável',
-		desc: 'Aumento na adoção de práticas sustentáveis',
+		title: 'Lorem ipsum dolor',
+		desc: 'Lorem ipsum dolor sit amet consectetur',
 	},
 	{
 		value: 30,
-		title: 'Investimentos Verdes',
-		desc: 'Crescimento em investimentos sustentáveis',
+		title: 'Lorem ipsum dolor',
+		desc: 'Lorem ipsum dolor sit amet consectetur',
 	},
 	{
 		value: 30,
-		title: 'Impacto Social',
-		desc: 'Benefícios para comunidades locais',
+		title: 'Lorem ipsum dolor',
+		desc: 'Lorem ipsum dolor sit amet consectetur',
 	},
 ];
 
@@ -78,12 +78,11 @@ const Metrics: React.FC = () => {
 	return (
 		<section className={styles.metricsSection}>
 			<div className={styles.header}>
-				<h2>Nosso impacto e progresso em números e estatísticas relevantes</h2>
+				<h2>Lorem ipsum dolor sit amet consectetur adipiscing elit.</h2>
 				<p>
-					Este projeto tem gerado resultados significativos na promoção da
-					economia verde. Nossas métricas demonstram um avanço contínuo em
-					direção à sustentabilidade. Através de parcerias estratégicas, estamos
-					transformando o setor financeiro.
+					Lorem ipsum dolor sit amet consectetur adipiscing elit. Aenean sit
+					amet metus a nulla suscipit bibendum. Lorem ipsum dolor sit amet
+					consectetur adipiscing elit.
 				</p>
 			</div>
 

@@ -6,19 +6,15 @@ const HeroSection: React.FC = () => {
 		<section className={styles.hero}>
 			<div className={styles.content}>
 				<h1>
-					Desenvolvendo líderes
-					<br />e viabilizando soluções
+					Lorem ipsum dolor
+					<br />
+					sit amet
 				</h1>
 				<p>
-					Bem-vindo à Aliança Brasileira de Finanças e Investimentos
-					Sustentáveis, onde buscamos promover a transformação sustentável no
-					Brasil, atuando como catalisadora no desenvolvimento de lideranças e
-					soluções em finanças e investimentos sustentáveis.
+					Lorem ipsum dolor sit amet consectetur adipiscing elit. Aenean sit
+					amet metus a nulla suscipit bibendum. Lorem ipsum dolor sit amet
+					consectetur adipiscing elit.
 				</p>
-				<div className={styles.buttons}>
-					<button className={styles.primary}>Botão 1</button>
-					<button className={styles.secondary}>Botão 2</button>
-				</div>
 			</div>
 		</section>
 	);
