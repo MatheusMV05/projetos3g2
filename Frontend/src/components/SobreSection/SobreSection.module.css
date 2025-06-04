@@ -1,0 +1,94 @@
+.sobreSection {
+  padding: 4rem 2rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  color: #333;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  flex: 1 1 300px;
+  max-width: 970px;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;  
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  margin-left: 46px;
+  margin-top: 26px;
+  color: #555;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.primary {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.link {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}

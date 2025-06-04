@@ -1,0 +1,89 @@
+.blogPostHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
+  background-color: #F4B315;
+}
+
+.left {
+  flex: 2;
+}
+
+.right {
+  flex: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backLink {
+  font-size: 0.875rem;
+  color: #000000;
+  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
+  margin-left: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 110%;
+  margin-bottom: 2.5rem;
+  margin-left: 3rem;
+}
+
+.details {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 2rem;
+  margin-left: 3rem;
+}
+
+.shareLabel {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  margin-left: 3rem;
+  font-weight: bold;
+}
+
+.icons {
+  display: flex;
+  gap: 12px;
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  margin-left: 3rem;
+}
+
+.icons a {
+  color: #000;
+  text-decoration: none;
+
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 2px;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.icons a:hover {
+  transform: scale(1.1);
+}
+
+.imagePlaceholder {
+  width: 100%;
+  max-width: 500px;
+  height: 200px;
+  margin-top: 7.8rem;
+  background: #dddddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #999;
+}
