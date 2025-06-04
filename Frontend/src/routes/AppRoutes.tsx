@@ -9,6 +9,9 @@ import Servicos from '../pages/Servicos/Servicos';
 import Sobre from '../pages/Sobre/Sobre';
 import Noticias from '../pages/Noticias/Noticias';
 import Equipe from '../pages/Equipe/Equipe';
+import Conteudo from '../pages/Conteudo/Conteudo'
+import PostEditor from '../pages/PostEditor/PostEditor'
+
 const AppRoutes: React.FC = () => {
 	return (
 		<Routes>
@@ -25,8 +28,11 @@ const AppRoutes: React.FC = () => {
 			{/* Rotas administrativas */}
 			<Route element={<LayoutADM />}>
 				<Route path="/equipe" element={<Equipe />} />
-				
+				<Route path="/conteudo" element={<Conteudo />} />
 			</Route>
+
+			<Route path="/post-editor" element={<PostEditor />} />
+
 		</Routes>
 	);
 };

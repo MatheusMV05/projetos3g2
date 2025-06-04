@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import HeaderADM from '../components/HeaderADM/HeaderADM';
+import HeaderADM from '../components/headerADM/HeaderADM';
 import Sidebar from '../components/Sidebar/Sidebar';
 import { Outlet } from 'react-router-dom';
 import './LayoutADM.css';
