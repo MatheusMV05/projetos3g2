@@ -10,4 +10,16 @@ export const TagService = {
         const response = await api.get<TagDTO[]>('/tags');
         return response.data;
     },
+
+    /**
+     * Busca as tags mais utilizadas.
+     * @param limit - O número de tags a serem retornadas.
+     * @returns Uma Promise com um array de tags populares.
+     */
+    listarPopulares: async (limit: number = 5): Promise<TagDTO[]> => {
+        const response = await api.get<TagDTO[]>('/tags/popular', {
+            params: {limit}
+        });
+        return response.data;
+    },
 };
