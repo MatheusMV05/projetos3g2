@@ -16,6 +16,13 @@ import CancelarInscricaoPage from '../pages/CancelarInscricao/CancelarInscricaoP
 import BuscaPage from '../pages/Busca/BuscaPage'; // Importar a nova página
 import PaginaViewPage from '../pages/PaginaView/PaginaViewPage'; // 1. Importar a nova página
 import PublicationDetailPage from '../pages/PublicationDetail/PublicationDetailPage'; // Importe a nova página
+import TagsListPage from '../pages/Tags/TagsListPage'; // Importar a nova página
+
+// Crie um placeholder para a página de detalhes da tag
+const TagDetailPage: React.FC = () => {
+    const {slug} = useParams();
+    return <div style={{padding: '2rem'}}><h1>Posts com a tag: {slug}</h1></div>
+}
 
 const AppRoutes: React.FC = () => {
     return (
@@ -33,6 +40,8 @@ const AppRoutes: React.FC = () => {
                 <Route path="/search" element={<BuscaPage/>}/> {/* Adicionar a rota de busca */}
                 <Route path="/pagina/view/:id" element={<PaginaViewPage/>}/> {/* 2. Adicionar a rota */}
                 <Route path="/publicacao/:slug" element={<PublicationDetailPage/>}/> {/* Adicione esta rota */}
+                <Route path="/tags" element={<TagsListPage/>}/>
+                <Route path="/tag/:slug" element={<TagDetailPage/>}/>
             </Route>
 
             {/* Rotas administrativas */}
