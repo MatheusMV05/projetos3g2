@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
+import PaginaDinamica from '../pages/PaginaDinamica/PaginaDinamica.tsx'; // 1. Import the new component
 import LayoutADM from '../layouts/LayoutADM'; // novo layout
 import Home from '../pages/Home/Home';
 import TrabalheConosco from '../pages/TrabalheConosco/TrabalheConosco';
@@ -18,6 +19,7 @@ const AppRoutes: React.FC = () => {
 			{/* Rotas públicas */}
 			<Route element={<MainLayout />}>
 				<Route path="/" element={<Home />} />
+				<Route path="/pagina/:slug" element={<PaginaDinamica />} /> {/* 2. Add this new route */}
 				<Route path="/trabalhe-conosco" element={<TrabalheConosco />} />
 				<Route path="/evento" element={<Evento />} />
 				<Route path="/servicos" element={<Servicos />} />
