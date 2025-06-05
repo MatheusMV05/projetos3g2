@@ -58,4 +58,16 @@ export const PublicationService = {
         const response = await api.get<PublicationDTO>(`/publications/${slug}`);
         return response.data;
     },
+
+    /**
+     * Busca as publicações mais recentes.
+     * @param limit O número máximo de publicações a serem retornadas.
+     * @returns Uma Promise com um array de publicações.
+     */
+    listarRecentes: async (limit: number = 3): Promise<PublicationDTO[]> => {
+        const response = await api.get<PublicationDTO[]>('/publications/recent', {
+            params: {limit}
+        });
+        return response.data;
+    },
 };
