@@ -70,4 +70,13 @@ export const PublicationService = {
         });
         return response.data;
     },
+
+    /**
+     * Busca todas as publicações marcadas como destaque.
+     * @returns Uma Promise com um array de publicações em destaque.
+     */
+    listarDestaques: async (): Promise<PublicationDTO[]> => {
+        const response = await api.get<PublicationDTO[]>('/publications/featured');
+        return response.data;
+    },
 };
