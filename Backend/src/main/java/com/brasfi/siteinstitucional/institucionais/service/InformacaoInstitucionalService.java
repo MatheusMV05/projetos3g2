@@ -5,19 +5,18 @@ import com.brasfi.siteinstitucional.exception.ResourceNotFoundException;
 import com.brasfi.siteinstitucional.institucionais.dto.InformacaoInstitucionalDTO;
 import com.brasfi.siteinstitucional.institucionais.entity.InformacaoInstitucional;
 import com.brasfi.siteinstitucional.institucionais.repository.InformacaoInstitucionalRepository;
+import com.brasfi.siteinstitucional.institucionais.entity.InformacaoInstitucionalVersao;
+import com.brasfi.siteinstitucional.institucionais.repository.InformacaoInstitucionalVersaoRepository;
+import com.brasfi.siteinstitucional.auth.entity.Usuario;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import com.brasfi.siteinstitucional.institucionais.entity.InformacaoInstitucionalVersao;
-import com.brasfi.siteinstitucional.institucionais.repository.InformacaoInstitucionalVersaoRepository;
-import com.brasfi.siteinstitucional.auth.entity.Usuario;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -95,6 +94,7 @@ public class InformacaoInstitucionalService {
         return infoRepository.save(info);
     }
 
+    @Transactional
     @Auditavel(acao = "ATUALIZAR", entidade = "INFORMACAO_INSTITUCIONAL")
     @CacheEvict(value = {"informacoes-institucionais", "informacoes-institucionais-all",
             "informacoes-institucionais-ativas", "informacoes-institucionais-tipo",
@@ -107,6 +107,11 @@ public class InformacaoInstitucionalService {
         // Verificar se a chave mudou e se já existe
         if (!infoExistente.getChave().equals(dto.getChave()) && infoRepository.existsByChave(dto.getChave())) {
             throw new IllegalArgumentException("Já existe uma informação institucional com a chave: " + dto.getChave());
+        }
+
+        // Criar versão antes de atualizar se o valor mudou
+        if (!infoExistente.getValor().equals(dto.getValor())) {
+            criarVersao(infoExistente, dto.getValor(), "Atualização de conteúdo");
         }
 
         infoExistente.setChave(dto.getChave());
@@ -142,36 +147,8 @@ public class InformacaoInstitucionalService {
         info.setAtivo(ativo);
         return infoRepository.save(info);
     }
-    @Transactional
-    @Auditavel(acao = "ATUALIZAR", entidade = "INFORMACAO_INSTITUCIONAL")
-    @CacheEvict(value = {"informacoes-institucionais", "informacoes-institucionais-all",
-            "informacoes-institucionais-ativas", "informacoes-institucionais-tipo",
-            "informacoes-institucionais-ativas-tipo", "informacoes-institucionais-map",
-            "informacoes-institucionais-map-tipo"}, allEntries = true)
-    public InformacaoInstitucional atualizar(Long id, InformacaoInstitucionalDTO dto) {
-        InformacaoInstitucional infoExistente = infoRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Informação institucional não encontrada com o id: " + id));
 
-        // Verificar se a chave mudou e se já existe
-        if (!infoExistente.getChave().equals(dto.getChave()) && infoRepository.existsByChave(dto.getChave())) {
-            throw new IllegalArgumentException("Já existe uma informação institucional com a chave: " + dto.getChave());
-        }
-
-        // Criar versão antes de atualizar
-        if (!infoExistente.getValor().equals(dto.getValor())) {
-            criarVersao(infoExistente, dto.getValor(), "Atualização de conteúdo");
-        }
-
-        infoExistente.setChave(dto.getChave());
-        infoExistente.setValor(dto.getValor());
-        infoExistente.setTipo(dto.getTipo());
-        infoExistente.setDescricao(dto.getDescricao());
-        infoExistente.setAtivo(dto.isAtivo());
-
-        return infoRepository.save(infoExistente);
-    }
-
-    // Novos métodos para versionamento
+    // Métodos para versionamento
     private void criarVersao(InformacaoInstitucional info, String novoValor, String descricao) {
         Usuario usuario = null;
         try {

@@ -16,6 +16,15 @@ public class TagDTO {
     @Size(max = 255, message = "Slug deve ter no máximo 255 caracteres")
     private String slug;
 
+    private String description;
+
+    private String color;
+
+    private boolean active = true;
+
     private Integer usageCount;
+
     private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
 }

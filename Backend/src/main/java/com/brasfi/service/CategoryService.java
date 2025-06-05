@@ -40,7 +40,6 @@ public class CategoryService {
         category.setName(categoryDto.getName());
         category.setSlug(generateSlug(categoryDto.getName()));
         category.setDescription(categoryDto.getDescription());
-        category.setActive(categoryDto.isActive());
 
         Category savedCategory = categoryRepository.save(category);
         return convertToDTO(savedCategory);
@@ -52,7 +51,6 @@ public class CategoryService {
                     category.setName(categoryDto.getName());
                     category.setSlug(generateSlug(categoryDto.getName()));
                     category.setDescription(categoryDto.getDescription());
-                    category.setActive(categoryDto.isActive());
 
                     Category savedCategory = categoryRepository.save(category);
                     return convertToDTO(savedCategory);
@@ -68,7 +66,7 @@ public class CategoryService {
     }
 
     public List<CategoryDTO> getActiveCategories() {
-        return categoryRepository.findByActiveTrueOrderByNameAsc()
+        return categoryRepository.findCategoriesWithPublishedContent()
                 .stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
@@ -80,7 +78,6 @@ public class CategoryService {
         dto.setName(category.getName());
         dto.setSlug(category.getSlug());
         dto.setDescription(category.getDescription());
-        dto.setActive(category.isActive());
         dto.setCreatedAt(category.getCreatedAt());
         dto.setUpdatedAt(category.getUpdatedAt());
         return dto;

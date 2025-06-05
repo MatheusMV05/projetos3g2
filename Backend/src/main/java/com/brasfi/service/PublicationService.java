@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,8 +26,8 @@ public class PublicationService {
     private final PublicationRepository publicationRepository;
     private final CategoryRepository categoryRepository;
     private final TagRepository tagRepository;
-    private final UserRepository userRepository;
     private final TagService tagService;
+    private final PublicationFileRepository publicationFileRepository;
 
     public Page<PublicationDTO> getAllPublications(PublicationSearchDTO searchDto) {
         Pageable pageable = createPageable(searchDto);
@@ -73,6 +74,12 @@ public class PublicationService {
             return Optional.of(convertToDTO(publication.get()));
         }
         return Optional.empty();
+    }
+
+    public PublicationDTO getPublicationById(Long id) {
+        return publicationRepository.findById(id)
+                .map(this::convertToDTO)
+                .orElseThrow(() -> new RuntimeException("Publication not found"));
     }
 
     public PublicationDTO createPublication(PublicationCreateDTO createDto, String authorEmail) {
@@ -125,6 +132,48 @@ public class PublicationService {
                 });
     }
 
+    public Optional<PublicationDTO> archivePublication(Long id) {
+        return publicationRepository.findById(id)
+                .map(publication -> {
+                    publication.setStatus(PublicationStatus.ARCHIVED);
+                    publication.setUpdatedAt(LocalDateTime.now());
+
+                    Publication savedPublication = publicationRepository.save(publication);
+                    return convertToDTO(savedPublication);
+                });
+    }
+
+    public Page<PublicationDTO> getDraftPublications(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
+        return publicationRepository.findByStatusOrderByPublishedAtDesc(PublicationStatus.DRAFT, pageable)
+                .map(this::convertToDTO);
+    }
+
+    public Page<PublicationDTO> getPublishedPublications(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("publishedAt").descending());
+        return publicationRepository.findByStatusOrderByPublishedAtDesc(PublicationStatus.PUBLISHED, pageable)
+                .map(this::convertToDTO);
+    }
+
+    public Page<PublicationDTO> getArchivedPublications(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("updatedAt").descending());
+        return publicationRepository.findByStatusOrderByPublishedAtDesc(PublicationStatus.ARCHIVED, pageable)
+                .map(this::convertToDTO);
+    }
+
+    public Page<PublicationDTO> getPublicationsByCategory(Long categoryId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("publishedAt").descending());
+        return publicationRepository.findByCategoryIdAndStatusOrderByPublishedAtDesc(
+                        categoryId, PublicationStatus.PUBLISHED, pageable)
+                .map(this::convertToDTO);
+    }
+
+    public Page<PublicationDTO> getPublicationsByTag(Long tagId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("publishedAt").descending());
+        return publicationRepository.findByTagId(tagId, PublicationStatus.PUBLISHED, pageable)
+                .map(this::convertToDTO);
+    }
+
     public List<PublicationDTO> getRecentPublications(int limit) {
         Pageable pageable = PageRequest.of(0, limit);
         return publicationRepository.findByStatusOrderByPublishedAtDesc(
@@ -142,18 +191,53 @@ public class PublicationService {
     }
 
     public List<PublicationDTO> getPublicationsByAuthor(String authorEmail) {
-        return publicationRepository.findByAuthorEmailOrderByCreatedAtDesc(authorEmail)
-                .stream()
+        return publicationRepository.findAll().stream()
+                .filter(p -> authorEmail.equals(p.getAuthorEmail()))
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
     public List<PublicationDTO> getPublicationsByTag(String tagSlug) {
-        return publicationRepository.findByTagsSlugAndStatusOrderByPublishedAtDesc(
-                        tagSlug, PublicationStatus.PUBLISHED)
-                .stream()
+        return publicationRepository.findAll().stream()
+                .filter(p -> p.getTags().stream().anyMatch(tag -> tagSlug.equals(tag.getSlug())))
+                .filter(p -> p.getStatus() == PublicationStatus.PUBLISHED)
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
+    }
+
+    public PublicationFileDTO uploadFile(Long publicationId, MultipartFile file, String description) {
+        // Implementação simplificada - você pode expandir conforme necessário
+        throw new UnsupportedOperationException("Método uploadFile não implementado ainda");
+    }
+
+    public void deleteFile(Long publicationId, Long fileId) {
+        // Implementação simplificada
+        throw new UnsupportedOperationException("Método deleteFile não implementado ainda");
+    }
+
+    public List<PublicationFileDTO> getPublicationFiles(Long publicationId) {
+        return publicationFileRepository.findByPublicationIdOrderByUploadDateDesc(publicationId)
+                .stream()
+                .map(this::convertFileToDTO)
+                .collect(Collectors.toList());
+    }
+
+    public Optional<PublicationDTO> featurePublication(Long id) {
+        return publicationRepository.findById(id)
+                .map(publication -> {
+                    publication.setFeatured(true);
+                    Publication saved = publicationRepository.save(publication);
+                    return convertToDTO(saved);
+                });
+    }
+
+    public Optional<PublicationDTO> unfeaturePublication(Long id) {
+        return publicationRepository.findById(id)
+                .map(publication -> {
+                    publication.setFeatured(false);
+                    Publication saved = publicationRepository.save(publication);
+                    return convertToDTO(saved);
+                });
     }
 
     private void mapCreateDtoToEntity(PublicationCreateDTO createDto, Publication publication, String authorEmail) {
@@ -163,7 +247,7 @@ public class PublicationService {
         publication.setSummary(createDto.getSummary());
         publication.setType(createDto.getType());
         publication.setStatus(PublicationStatus.DRAFT);
-        publication.setFeatured(createDto.isFeatured());
+        publication.setFeatured(createDto.getFeatured());
         publication.setAuthorEmail(authorEmail);
         publication.setCreatedAt(LocalDateTime.now());
         publication.setUpdatedAt(LocalDateTime.now());
@@ -176,8 +260,12 @@ public class PublicationService {
         }
 
         // Set tags
-        if (createDto.getTagNames() != null && !createDto.getTagNames().isEmpty()) {
-            Set<Tag> tags = tagService.findOrCreateTags(createDto.getTagNames());
+        if (createDto.getTagIds() != null && !createDto.getTagIds().isEmpty()) {
+            Set<Tag> tags = createDto.getTagIds().stream()
+                    .map(tagRepository::findById)
+                    .filter(Optional::isPresent)
+                    .map(Optional::get)
+                    .collect(Collectors.toSet());
             publication.setTags(tags);
         }
     }
@@ -207,11 +295,15 @@ public class PublicationService {
         }
 
         // Update tags
-        if (updateDto.getTagNames() != null) {
-            if (updateDto.getTagNames().isEmpty()) {
+        if (updateDto.getTagIds() != null) {
+            if (updateDto.getTagIds().isEmpty()) {
                 publication.getTags().clear();
             } else {
-                Set<Tag> tags = tagService.findOrCreateTags(updateDto.getTagNames());
+                Set<Tag> tags = updateDto.getTagIds().stream()
+                        .map(tagRepository::findById)
+                        .filter(Optional::isPresent)
+                        .map(Optional::get)
+                        .collect(Collectors.toSet());
                 publication.setTags(tags);
             }
         }
@@ -226,9 +318,9 @@ public class PublicationService {
         dto.setSummary(publication.getSummary());
         dto.setType(publication.getType());
         dto.setStatus(publication.getStatus());
-        dto.setFeatured(publication.isFeatured());
-        dto.setAuthorEmail(publication.getAuthorEmail());
-        dto.setViewCount(publication.getViewCount());
+        dto.setFeatured(publication.getFeatured());
+        dto.setAuthorName(publication.getAuthorEmail());
+        dto.setViewCount(publication.getViewCount().intValue());
         dto.setCreatedAt(publication.getCreatedAt());
         dto.setUpdatedAt(publication.getUpdatedAt());
         dto.setPublishedAt(publication.getPublishedAt());
@@ -250,38 +342,33 @@ public class PublicationService {
                         tagDto.setId(tag.getId());
                         tagDto.setName(tag.getName());
                         tagDto.setSlug(tag.getSlug());
-                        tagDto.setColor(tag.getColor());
+                        tagDto.setUsageCount(tag.getUsageCount());
                         return tagDto;
                     })
                     .collect(Collectors.toSet());
             dto.setTags(tagDtos);
         }
 
-        // Convert files
-        if (publication.getFiles() != null) {
-            Set<PublicationFileDTO> fileDtos = publication.getFiles().stream()
-                    .map(file -> {
-                        PublicationFileDTO fileDto = new PublicationFileDTO();
-                        fileDto.setId(file.getId());
-                        fileDto.setFileName(file.getFileName());
-                        fileDto.setOriginalFileName(file.getOriginalFileName());
-                        fileDto.setFileType(file.getFileType());
-                        fileDto.setFileSize(file.getFileSize());
-                        fileDto.setFilePath(file.getFilePath());
-                        return fileDto;
-                    })
-                    .collect(Collectors.toSet());
-            dto.setFiles(fileDtos);
-        }
+        return dto;
+    }
 
+    private PublicationFileDTO convertFileToDTO(PublicationFile file) {
+        PublicationFileDTO dto = new PublicationFileDTO();
+        dto.setId(file.getId());
+        dto.setFileName(file.getFileName());
+        dto.setOriginalName(file.getOriginalFileName());
+        dto.setFilePath(file.getFilePath());
+        dto.setFileSize(file.getFileSize());
+        dto.setMimeType(file.getMimeType());
+        dto.setUploadDate(file.getUploadDate());
         return dto;
     }
 
     private Pageable createPageable(PublicationSearchDTO searchDto) {
-        int page = searchDto.getPage() != null ? searchDto.getPage() : 0;
-        int size = searchDto.getSize() != null ? searchDto.getSize() : 10;
-        String sortBy = searchDto.getSortBy() != null ? searchDto.getSortBy() : "publishedAt";
-        String sortDir = searchDto.getSortDirection() != null ? searchDto.getSortDirection() : "desc";
+        int page = searchDto.getPage();
+        int size = searchDto.getSize();
+        String sortBy = searchDto.getSortBy();
+        String sortDir = searchDto.getSortDirection();
 
         Sort sort = sortDir.equalsIgnoreCase("asc") ?
                 Sort.by(sortBy).ascending() :
