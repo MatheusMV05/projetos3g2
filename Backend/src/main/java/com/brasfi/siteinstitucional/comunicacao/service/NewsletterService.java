@@ -29,15 +29,11 @@ public class NewsletterService {
     private final AssinanteRepository assinanteRepository;
     private final NewsletterRepository newsletterRepository;
     private final EmailService emailService;
-    private final RecaptchaService recaptchaService;
     private final NotificacaoPublisher notificacaoPublisher;
 
     @Auditavel(acao = "INSCREVER", entidade = "ASSINANTE_NEWSLETTER")
     public Assinante inscrever(AssinanteDTO assinanteDTO) {
-        // Validar reCAPTCHA
-        if (!recaptchaService.validarToken(assinanteDTO.getRecaptchaToken())) {
-            throw new IllegalArgumentException("Verificação de segurança falhou. Por favor, tente novamente.");
-        }
+
 
         // Verificar se já existe
         if (assinanteRepository.existsByEmail(assinanteDTO.getEmail())) {

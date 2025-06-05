@@ -23,6 +23,4 @@ public class AssinanteDTO {
 
     private boolean ativo;
 
-    @NotBlank(message = "Verificação reCAPTCHA é obrigatória")
-    private String recaptchaToken;
 }
