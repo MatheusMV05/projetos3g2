@@ -9,13 +9,13 @@ const Footer: React.FC = () => {
 	const [message, setMessage] = useState('');
 	const [messageType, setMessageType] = useState<'success' | 'error' | ''>('');
 
-	// 2. Criar estado para armazenar as informações institucionais
+	// 2. Criar estado para armazenar as informações institucionais como um mapa
 	const [info, setInfo] = useState<Record<string, string>>({});
 	const [loading, setLoading] = useState(true);
 
-	// 3. Buscar os dados quando o componente for montado
+	// 3. Buscar o mapa de dados quando o componente for montado
 	useEffect(() => {
-		const fetchInfo = async () => {
+		const fetchInfoMap = async () => {
 			try {
 				const infoMap = await InformacaoInstitucionalService.buscarMapa();
 				setInfo(infoMap);
@@ -25,12 +25,11 @@ const Footer: React.FC = () => {
 				setLoading(false);
 			}
 		};
-		fetchInfo();
+		fetchInfoMap();
 	}, []);
 
 	const handleSubscribe = async (e: React.FormEvent) => {
 		e.preventDefault();
-		// ... (lógica de inscrição existente permanece a mesma)
 		setMessage('');
 		setMessageType('');
 		if (!email) {
@@ -58,21 +57,21 @@ const Footer: React.FC = () => {
 		<footer className={styles.footer}>
 			<div className={styles.newsletter}>
 				<div className={styles.newsText}>
-					{/* 4. Usar os dados do estado ou um fallback */}
+					{/* 4. Usar os dados do mapa ou um fallback enquanto carrega */}
 					<h3>{loading ? 'Carregando...' : (info.footer_newsletter_titulo || 'Assine nossa newsletter')}</h3>
 					<p>{loading ? '...' : (info.footer_newsletter_subtitulo || 'Fique por dentro das novidades sobre finanças sustentáveis.')}</p>
 				</div>
 				<form className={styles.form} onSubmit={handleSubscribe}>
 					<input
 						type="email"
-						placeholder="Digite seu e-mail"
+						placeholder={info.footer_newsletter_placeholder || "Digite seu e-mail"}
 						className={styles.input}
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
 					<button type="submit" className={styles.submit}>
-						Inscrever
+						{info.footer_newsletter_botao || 'Inscrever'}
 					</button>
 				</form>
 			</div>
@@ -83,7 +82,6 @@ const Footer: React.FC = () => {
 				</p>
 			)}
 
-			{/* 5. Usar os dados do estado ou um fallback */}
 			<p className={styles.privacy}>
 				<a href={info.footer_privacidade_url || '#'}>
 					{loading ? '' : (info.footer_privacidade_texto || 'Ao se inscrever, você concorda com nossa Política de Privacidade')}
@@ -96,9 +94,8 @@ const Footer: React.FC = () => {
 				<div className={styles.logoSection}>
 					<img src={logo} alt="Logo BRASFI" className={styles.logo} />
 				</div>
-				{/* 6. Usar os dados do estado ou um fallback */}
 				<p className={styles.rights}>
-					{loading ? '' : (info.footer_direitos_autorais || '© 2025 Relume. Todos os direitos reservados.')}
+					{loading ? '' : (info.footer_direitos_autorais || '© 2025 BRASFI. Todos os direitos reservados.')}
 				</p>
 			</div>
 		</footer>
