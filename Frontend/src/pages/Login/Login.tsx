@@ -9,10 +9,9 @@ interface LoginFormData {
 interface LoginProps {
   isOpen: boolean;
   onClose: () => void;
-  onSwitchToRegister: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({ isOpen, onClose, onSwitchToRegister }) => {
+const Login: React.FC<LoginProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState<LoginFormData>({
     email: '',
     password: '',
@@ -26,7 +25,7 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose, onSwitchToRegister }) =>
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Login enviado:', formData);
-    // Enviar dados para autenticação
+    // Aqui você pode chamar a função de autenticação
   };
 
   if (!isOpen) return null;
@@ -66,13 +65,6 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose, onSwitchToRegister }) =>
           <button type="submit" className="submit-btn">
             Entrar
           </button>
-
-          <a href="#" className="register" onClick={(e) => {
-            e.preventDefault();
-            onSwitchToRegister();
-          }}>
-            Não tem uma conta? Cadastre-se
-          </a>
         </form>
       </div>
     </div>

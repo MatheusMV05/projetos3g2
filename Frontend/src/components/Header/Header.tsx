@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
-import Register from '../../pages/Register/Register';
-import Login from '../../pages/Login/Login'; // <- novo componente a ser usado
+import Login from '../../pages/Login/Login'; // apenas Login
 import logo from '../../assets/Logo.svg';
 
 const Header: React.FC = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [showDropdown, setShowDropdown] = useState(false);
-	const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-	const [isLoginOpen, setIsLoginOpen] = useState(false); // <- controle do login
+	const [isLoginOpen, setIsLoginOpen] = useState(false); // controle do login
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -43,9 +41,7 @@ const Header: React.FC = () => {
 				</div>
 
 				<button
-					className={`${styles.hamburgerBtn} ${
-						isMenuOpen ? styles.active : ''
-					}`}
+					className={`${styles.hamburgerBtn} ${isMenuOpen ? styles.active : ''}`}
 					onClick={toggleMenu}
 					aria-label="Menu"
 				>
@@ -71,7 +67,7 @@ const Header: React.FC = () => {
 						)}
 					</div>
 
-					{/* Agora é Login */}
+					{/* Botão de Login */}
 					<a
 						href="#"
 						onClick={(e) => {
@@ -89,23 +85,10 @@ const Header: React.FC = () => {
 				</div>
 			</header>
 
-			{/* Modais */}
+			{/* Modal de Login */}
 			<Login
 				isOpen={isLoginOpen}
 				onClose={() => setIsLoginOpen(false)}
-				onSwitchToRegister={() => {
-					setIsLoginOpen(false);
-					setIsRegisterOpen(true);
-				}}
-			/>
-
-			<Register
-				isOpen={isRegisterOpen}
-				onClose={() => setIsRegisterOpen(false)}
-				onSwitchToLogin={() => {
-					setIsRegisterOpen(false);
-					setIsLoginOpen(true);
-				}}
 			/>
 		</>
 	);

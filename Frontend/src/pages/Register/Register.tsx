@@ -15,7 +15,7 @@ interface RegisterProps {
   onSwitchToLogin: () => void; // ✅ nova prop
 }
 
-const Register: React.FC<RegisterProps> = ({ isOpen, onClose, onSwitchToLogin }) => {
+const Register: React.FC<RegisterProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState<RegisterFormData>({
     name: '',
     email: '',
@@ -74,12 +74,7 @@ const Register: React.FC<RegisterProps> = ({ isOpen, onClose, onSwitchToLogin })
           </div>
           <button type="submit" className="submit-btn">Cadastrar</button>
 
-          <a href="#" className='register' onClick={(e) => {
-            e.preventDefault();
-            onSwitchToLogin();
-          }}>
-            Já sou cadastrado
-          </a>
+         
         </form>
       </div>
     </div>
