@@ -1,4 +1,4 @@
-import { api } from './api';
+import {api} from './api';
 
 /**
  * Interface que representa a estrutura de uma Informação Institucional
@@ -36,6 +36,16 @@ export const InformacaoInstitucionalService = {
      */
     buscarMapa: async (): Promise<Record<string, string>> => {
         const response = await api.get<Record<string, string>>('/public/institucionais/mapa');
+        return response.data;
+    },
+
+    /**
+     * Busca uma lista de informações institucionais por um tipo específico.
+     * @param tipo O tipo a ser buscado (ex: 'FAQ').
+     * @returns Uma Promise com um array de informações institucionais.
+     */
+    buscarPorTipo: async (tipo: string): Promise<InformacaoInstitucional[]> => {
+        const response = await api.get<InformacaoInstitucional[]>(`/public/institucionais/tipo/${tipo}`);
         return response.data;
     }
 };
