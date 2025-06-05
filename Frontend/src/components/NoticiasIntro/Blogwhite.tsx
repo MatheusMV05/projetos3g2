@@ -1,79 +1,72 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 import styles from './blogwhite.module.css';
+import {PublicationService, PublicationDTO} from '../../services/publicationService'; // 1. Importar
 
 const Blogwhite: React.FC = () => {
-	return (
-		<section className={styles.blogSection}>
-			{/* Destaque principal */}
-			<div className={styles.mainHighlight}>
-				<div className={styles.mainImage}>
-					<div className={styles.imagePlaceholder}>
-						<a
-							href="/PlaceholderImage.svg"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img src="/PlaceholderImage.svg" alt="PlaceHolder" />
-						</a>
-					</div>
-				</div>
-				<div className={styles.mainContent}>
-					<span className={styles.mainCategory}>Lorem ipsum</span>
-					<div className={styles.mainTitle}>
-						Lorem ipsum <br></br> dolor sit amet
-					</div>
-					<p className={styles.mainDescription}>
-						Lorem ipsum dolor sit amet consectetur adipiscing elit.
-					</p>
-					<div className={styles.mainAuthor}>
-						<span>
-							👤 Lorem ipsum dolor sit amet consectetur adipiscing elit.
-						</span>
-					</div>
-				</div>
-			</div>
-			<br></br>
-			<br></br>
-			{/* Filtros simulados */}
-			<div className={styles.filters}>
-				<button>Lorem ipsum</button>
-				<a>
-					<strong>Lorem ipsum</strong>
-				</a>
-				<a>
-					<strong>Lorem ipsum</strong>
-				</a>
-				<a>
-					<strong>Lorem ipsum</strong>
-				</a>
-				<a>
-					<strong>Lorem ipsum</strong>
-				</a>
-			</div>
-			<br></br>
-			<br></br>
-			{/* Cards */}
-			<div className={styles.grid}>
-				{[...Array(6)].map((_, i) => (
-					<div className={styles.card} key={i}>
-						<div className={styles.cardImage}>📷</div>
-						<div className={styles.cardContent}>
-							<div className={styles.cardCategory}>Lorem</div>
-							<div className={styles.cardTitle}>
-								Lorem ipsum dolor sit amet consectetur adipiscing elit.
-							</div>
-							<div className={styles.cardAuthor}>
+    // 2. Adicionar estados para publicações, loading e erro
+    const [publications, setPublications] = useState<PublicationDTO[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    // 3. Buscar dados da API
+    useEffect(() => {
+        const fetchPublications = async () => {
+            try {
+                const response = await PublicationService.listarPublicacoes(0, 6); // Busca 6 itens para o grid
+                setPublications(response.content);
+            } catch (error) {
+                console.error("Erro ao buscar publicações:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchPublications();
+    }, []);
+
+    if (loading) {
+        return (
+            <section className={styles.blogSection}>
+                <p>Carregando publicações...</p>
+            </section>
+        );
+    }
+
+    return (
+        <section className={styles.blogSection}>
+            {/* Seção de Destaque pode ser mantida ou tornada dinâmica também */}
+            <div className={styles.mainHighlight}>
+                {/* ... (código existente do destaque) ... */}
+            </div>
+            <br/><br/>
+            <div className={styles.filters}>
+                {/* ... (código existente dos filtros) ... */}
+            </div>
+            <br/><br/>
+
+            {/* 4. Renderizar o grid dinamicamente */}
+            <div className={styles.grid}>
+                {publications.map((pub) => (
+                    <div className={styles.card} key={pub.id}>
+                        <div className={styles.cardImage}>
+                            {/* Placeholder para a imagem da publicação */}
+                            📷
+                        </div>
+                        <div className={styles.cardContent}>
+                            <div className={styles.cardCategory}>{pub.category?.name || 'Sem Categoria'}</div>
+                            <Link to={`/publicacao/${pub.slug}`} className={styles.cardTitleLink}>
+                                <div className={styles.cardTitle}>{pub.title}</div>
+                            </Link>
+                            <div className={styles.cardAuthor}>
 								<span>
-									👤 Lorem ipsum dolor sit amet consectetur adipiscing elit.
-									<br></br>
+									👤 Por {pub.authorName || 'Autor Desconhecido'} em {new Date(pub.publishedAt).toLocaleDateString('pt-BR')}
 								</span>
-							</div>
-						</div>
-					</div>
-				))}
-			</div>
-		</section>
-	);
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
 };
 
 export default Blogwhite;

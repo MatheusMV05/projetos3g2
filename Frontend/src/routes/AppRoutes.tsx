@@ -15,6 +15,7 @@ import PostEditor from '../pages/PostEditor/PostEditor'
 import CancelarInscricaoPage from '../pages/CancelarInscricao/CancelarInscricaoPage'; // Importe a nova página
 import BuscaPage from '../pages/Busca/BuscaPage'; // Importar a nova página
 import PaginaViewPage from '../pages/PaginaView/PaginaViewPage'; // 1. Importar a nova página
+import PublicationDetailPage from '../pages/PublicationDetail/PublicationDetailPage'; // Importe a nova página
 
 const AppRoutes: React.FC = () => {
     return (
@@ -31,6 +32,7 @@ const AppRoutes: React.FC = () => {
                 <Route path="/newsletter/cancelar" element={<CancelarInscricaoPage/>}/> {/* Adicione esta rota */}
                 <Route path="/search" element={<BuscaPage/>}/> {/* Adicionar a rota de busca */}
                 <Route path="/pagina/view/:id" element={<PaginaViewPage/>}/> {/* 2. Adicionar a rota */}
+                <Route path="/publicacao/:slug" element={<PublicationDetailPage/>}/> {/* Adicione esta rota */}
             </Route>
 
             {/* Rotas administrativas */}
