@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import styles from './Header.module.css';
 import Login from '../../pages/Login/Login';
 import ContatoModal from '../ContatoModal/ContatoModal';
@@ -11,6 +11,15 @@ const Header: React.FC = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isContatoOpen, setIsContatoOpen] = useState(false);
+    const [termoBusca, setTermoBusca] = useState(''); // 2. Estado para o input
+    const navigate = useNavigate(); // 3. Hook para navegação
+
+    const handleSearchSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (termoBusca.trim()) {
+            navigate(`/search?q=${encodeURIComponent(termoBusca.trim())}`);
+        }
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -88,6 +97,16 @@ const Header: React.FC = () => {
                         Entrar
                     </a>
                 </nav>
+
+                <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
+                    <input
+                        type="search"
+                        placeholder="Buscar no site..."
+                        value={termoBusca}
+                        onChange={(e) => setTermoBusca(e.target.value)}
+                        className={styles.searchInput}
+                    />
+                </form>
 
                 <div className={styles.rightSection}>
                     <button className={styles.langBtn}>Idioma</button>
