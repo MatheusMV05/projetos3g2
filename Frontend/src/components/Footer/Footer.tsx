@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.css';
+import logo from '../../assets/Ativo 1.svg';
 
 const Footer: React.FC = () => {
 	return (
@@ -34,8 +35,8 @@ const Footer: React.FC = () => {
 
 			<div className={styles.bottom}>
 				<div className={styles.logoSection}>
-					<img src="/logo.png" alt="Logo BRASFI" className={styles.logo} />
-					<span className={styles.logoText}>BRASFI</span>
+					<img src={logo} alt="Logo BRASFI" className={styles.logo} />
+				
 				</div>
 				<p className={styles.rights}>
 					© 2025 Relume. Todos os direitos reservados.

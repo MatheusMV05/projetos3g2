@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import Register from '../../pages/Register/Register';
 import Login from '../../pages/Login/Login'; // <- novo componente a ser usado
+import logo from '../../assets/Logo.svg';
 
 const Header: React.FC = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +38,7 @@ const Header: React.FC = () => {
 			<header className={styles.header}>
 				<div className={styles.leftSection}>
 					<Link to="/" className={styles.logoLink}>
-						<img src="/logo.png" alt="BRASFI logo" className={styles.logo} />
+						<img src={logo} alt="BRASFI logo" className={styles.logo} />
 					</Link>
 				</div>
 

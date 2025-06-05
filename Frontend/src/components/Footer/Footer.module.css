@@ -141,6 +141,10 @@
 	color: #333;
 }
 
+.logo {
+		width:180px;   
+	}
+
 @media (max-width: 768px) {
 	.newsletter {
 		flex-direction: column;
@@ -177,4 +181,6 @@
 	.submit {
 		width: 100%;
 	}
+
+	
 }

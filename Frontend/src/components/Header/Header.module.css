@@ -55,6 +55,10 @@
   gap: 12px;
 }
 
+.logo {
+  width: 100px;   
+}
+
 .langBtn {
   padding: 8px 20px;
   border: 1px solid #000;
