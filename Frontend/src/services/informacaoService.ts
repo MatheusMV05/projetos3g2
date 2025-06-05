@@ -47,5 +47,15 @@ export const InformacaoInstitucionalService = {
     buscarPorTipo: async (tipo: string): Promise<InformacaoInstitucional[]> => {
         const response = await api.get<InformacaoInstitucional[]>(`/public/institucionais/tipo/${tipo}`);
         return response.data;
+    },
+
+    /**
+     * Busca um mapa de chave-valor de informações institucionais por um tipo específico.
+     * @param tipo O tipo a ser buscado (ex: 'SOBRE_SECAO').
+     * @returns Um mapa onde a chave é a 'chave' da informação e o valor é o seu 'valor'.
+     */
+    buscarMapaPorTipo: async (tipo: string): Promise<Record<string, string>> => {
+        const response = await api.get<Record<string, string>>(`/public/institucionais/mapa/tipo/${tipo}`);
+        return response.data;
     }
 };
