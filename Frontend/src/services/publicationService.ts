@@ -48,4 +48,14 @@ export const PublicationService = {
         });
         return response.data;
     },
+
+    /**
+     * Busca uma publicação específica pelo seu slug.
+     * @param slug O slug da publicação.
+     * @returns Uma Promise com os dados da publicação.
+     */
+    buscarPorSlug: async (slug: string): Promise<PublicationDTO> => {
+        const response = await api.get<PublicationDTO>(`/publications/${slug}`);
+        return response.data;
+    },
 };
