@@ -42,7 +42,9 @@ const Header: React.FC = () => {
 				</div>
 
 				<button
-					className={`${styles.hamburgerBtn} ${isMenuOpen ? styles.active : ''}`}
+					className={`${styles.hamburgerBtn} ${
+						isMenuOpen ? styles.active : ''
+					}`}
 					onClick={toggleMenu}
 					aria-label="Menu"
 				>
@@ -50,8 +52,8 @@ const Header: React.FC = () => {
 				</button>
 
 				<nav className={`${styles.nav} ${isMenuOpen ? styles.menuOpen : ''}`}>
-					<a href="/sobre">Sobre a BRASFI</a>
-					<a href="/servicos">Serviços</a>
+					<Link to="/sobre">Sobre a BRASFI</Link>
+					<Link to="/servicos">Serviços</Link>
 					<Link to="/trabalhe-conosco">Faça parte</Link>
 					<Link to="/evento">Eventos</Link>
 
@@ -69,10 +71,13 @@ const Header: React.FC = () => {
 					</div>
 
 					{/* Agora é Login */}
-					<a href="#" onClick={(e) => {
-						e.preventDefault();
-						setIsLoginOpen(true);
-					}}>
+					<a
+						href="#"
+						onClick={(e) => {
+							e.preventDefault();
+							setIsLoginOpen(true);
+						}}
+					>
 						Entrar
 					</a>
 				</nav>

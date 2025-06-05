@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ProjectCard from './ProjectCard';
+import ProjectsGrid from './ProjectsGrid';
 import styles from './SustainableProjectsSection.module.css';
+import { useState } from 'react';
 
 const allProjects = [
 	{
