@@ -13,6 +13,7 @@ import Equipe from '../pages/Equipe/Equipe';
 import Conteudo from '../pages/Conteudo/Conteudo'
 import PostEditor from '../pages/PostEditor/PostEditor'
 import CancelarInscricaoPage from '../pages/CancelarInscricao/CancelarInscricaoPage'; // Importe a nova página
+import BuscaPage from '../pages/Busca/BuscaPage'; // Importar a nova página
 
 const AppRoutes: React.FC = () => {
     return (
@@ -27,6 +28,7 @@ const AppRoutes: React.FC = () => {
                 <Route path="/sobre" element={<Sobre/>}/>
                 <Route path="/noticias" element={<Noticias/>}/>
                 <Route path="/newsletter/cancelar" element={<CancelarInscricaoPage/>}/> {/* Adicione esta rota */}
+                <Route path="/search" element={<BuscaPage/>}/> {/* Adicionar a rota de busca */}
             </Route>
 
             {/* Rotas administrativas */}
