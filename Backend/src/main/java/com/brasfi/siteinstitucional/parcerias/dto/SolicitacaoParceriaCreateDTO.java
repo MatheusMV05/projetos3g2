@@ -39,6 +39,4 @@ public class SolicitacaoParceriaCreateDTO {
     @Size(min = 50, max = 5000, message = "Mensagem deve ter entre 50 e 5000 caracteres")
     private String mensagemProposta;
 
-    @NotBlank(message = "Token reCAPTCHA é obrigatório")
-    private String recaptchaToken;
 }

@@ -5,7 +5,7 @@ import com.brasfi.siteinstitucional.entity.Inscricao;
 import com.brasfi.siteinstitucional.entity.Evento;
 
 @Service
-public class EmailService {
+public class EventoEmailService {
 
     public void enviarEmailConfirmacao(Inscricao inscricao) {
         System.out.println("--- SIMULANDO ENVIO DE E-MAIL ---");

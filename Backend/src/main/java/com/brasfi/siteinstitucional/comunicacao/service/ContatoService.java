@@ -26,15 +26,11 @@ public class ContatoService {
 
     private final MensagemRepository mensagemRepository;
     private final EmailService emailService;
-    private final RecaptchaService recaptchaService;
     private final NotificacaoPublisher notificacaoPublisher;
 
     @Auditavel(acao = "CRIAR", entidade = "MENSAGEM_CONTATO")
     public Mensagem registrarMensagem(MensagemDTO mensagemDTO) {
-        // Validar reCAPTCHA
-        if (!recaptchaService.validarToken(mensagemDTO.getRecaptchaToken())) {
-            throw new IllegalArgumentException("Verificação de segurança falhou. Por favor, tente novamente.");
-        }
+
 
         Mensagem mensagem = Mensagem.builder()
                 .nome(mensagemDTO.getNome())
