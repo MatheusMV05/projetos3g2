@@ -6,12 +6,15 @@ import Blog from '../../components/Blog/Blog';
 
 const Evento: React.FC = () => {
 	return (
-		<div style={{ padding: '2rem' }}>
-			<h1>Eventos</h1>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipiscing elit.
-				<br />
-			</p>
+		<div>
+			<Blog />
+			<div style={{ marginTop: '50px' }}>
+				<h1>Eventos</h1>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipiscing elit.
+					<br />
+				</p>
+			</div>
 
 			{/* Layout com grid ajustado */}
 			<div
@@ -20,6 +23,7 @@ const Evento: React.FC = () => {
 					gridTemplateColumns: '700px 1fr', // largura fixa para o card principal
 					columnGap: '2rem', // distância ajustada entre colunas
 					alignItems: 'start',
+					padding: '2rem'
 				}}
 			>
 				{/* Evento em destaque */}
@@ -53,7 +57,11 @@ const Evento: React.FC = () => {
 								fontSize: '1rem',
 							}}
 						>
-							xxx<br />XX<br />xxx
+							xxx
+							<br />
+							XX
+							<br />
+							xxx
 						</div>
 					</div>
 					<div style={{ padding: '1.2rem' }}>
@@ -69,7 +77,13 @@ const Evento: React.FC = () => {
 						>
 							Categoria
 						</div>
-						<div style={{ fontWeight: 'bold', fontSize: '1.1rem', margin: '1rem 0' }}>
+						<div
+							style={{
+								fontWeight: 'bold',
+								fontSize: '1.1rem',
+								margin: '1rem 0',
+							}}
+						>
 							Título do Evento
 						</div>
 						<div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
@@ -92,7 +106,14 @@ const Evento: React.FC = () => {
 				</div>
 
 				{/* Lista lateral de eventos */}
-				<div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', fontWeight: 'bold' }}>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '1.2rem',
+						fontWeight: 'bold',
+					}}
+				>
 					<EventHeader
 						weekday="xxx"
 						day="XX"
@@ -124,7 +145,6 @@ const Evento: React.FC = () => {
 
 			<BlogPostHeader />
 			<ProximosEventos />
-			<Blog />
 		</div>
 	);
 };
