@@ -1,18 +1,13 @@
 package com.brasfi.siteinstitucional.auth.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:3000") // URL do frontend React
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*")
-                .allowCredentials(true);
-    }
+    // CORS agora é configurado no SecurityConfig para evitar conflitos
+    // com a autenticação JWT
+
+    // Se precisar de configurações adicionais de MVC, adicionar aqui
 }
