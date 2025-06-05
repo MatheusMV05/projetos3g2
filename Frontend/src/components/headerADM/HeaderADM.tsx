@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './HeaderADM.css';
 import Register from '../../pages/Register/Register';
 
