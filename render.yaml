@@ -1,0 +1,59 @@
+services:
+  # Backend Spring Boot
+  - type: web
+    name: brasfi-backend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    region: oregon
+    plan: starter
+    branch: main
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: brasfi-db
+          property: connectionString
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: SERVER_PORT
+        value: 8080
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: JWT_EXPIRATION
+        value: 86400000
+      - key: APP_BASE_URL
+        value: https://brasfi-backend.onrender.com
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://brasfi-frontend.onrender.com,http://localhost:3000
+      - key: SPRING_MAIL_HOST
+        value: smtp.gmail.com
+      - key: SPRING_MAIL_PORT
+        value: 587
+      - key: SPRING_MAIL_USERNAME
+        value: noreply@brasfi.com.br
+      - key: SPRING_MAIL_PASSWORD
+        sync: false # Será configurado manualmente
+      - key: SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH
+        value: true
+      - key: SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE
+        value: true
+      - key: APPLICATION_BACKUP_DIRECTORY
+        value: /app/backups
+      - key: APPLICATION_RATELIMITING_ENABLED
+        value: true
+      - key: APPLICATION_RATELIMITING_LIMIT
+        value: 100
+      - key: APPLICATION_RATELIMITING_DURATION
+        value: 60
+      - key: BRASFI_ADMIN_EMAIL
+        value: admin@brasfi.com.br
+      - key: JAVA_OPTS
+        value: -Xmx512m -Xms256m
+
+  # Banco de dados PostgreSQL
+databases:
+  - name: brasfi-db
+    databaseName: brasfi
+    user: brasfi_user
+    region: oregon
+    plan: starter
