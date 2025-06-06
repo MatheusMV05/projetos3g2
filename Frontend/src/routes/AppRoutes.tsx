@@ -1,8 +1,8 @@
 import React from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useParams} from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
-import PaginaDinamica from '../pages/PaginaDinamica/PaginaDinamica.tsx'; // 1. Import the new component
-import LayoutADM from '../layouts/LayoutADM'; // novo layout
+import PaginaDinamica from '../pages/PaginaDinamica/PaginaDinamica.tsx';
+import LayoutADM from '../layouts/LayoutADM';
 import Home from '../pages/Home/Home';
 import TrabalheConosco from '../pages/TrabalheConosco/TrabalheConosco';
 import Evento from '../pages/Evento/Evento';
@@ -12,11 +12,12 @@ import Noticias from '../pages/Noticias/Noticias';
 import Equipe from '../pages/Equipe/Equipe';
 import Conteudo from '../pages/Conteudo/Conteudo'
 import PostEditor from '../pages/PostEditor/PostEditor'
-import CancelarInscricaoPage from '../pages/CancelarInscricao/CancelarInscricaoPage'; // Importe a nova página
-import BuscaPage from '../pages/Busca/BuscaPage'; // Importar a nova página
-import PaginaViewPage from '../pages/PaginaView/PaginaViewPage'; // 1. Importar a nova página
-import PublicationDetailPage from '../pages/PublicationDetail/PublicationDetailPage'; // Importe a nova página
-import TagsListPage from '../pages/Tags/TagsListPage'; // Importar a nova página
+import EventoEditor from '../components/EventoEditor/EventoEditor'; // Import do novo editor
+import CancelarInscricaoPage from '../pages/CancelarInscricao/CancelarInscricaoPage';
+import BuscaPage from '../pages/Busca/BuscaPage';
+import PaginaViewPage from '../pages/PaginaView/PaginaViewPage';
+import PublicationDetailPage from '../pages/PublicationDetail/PublicationDetailPage';
+import TagsListPage from '../pages/Tags/TagsListPage';
 
 // Crie um placeholder para a página de detalhes da tag
 const TagDetailPage: React.FC = () => {
@@ -30,16 +31,16 @@ const AppRoutes: React.FC = () => {
             {/* Rotas públicas */}
             <Route element={<MainLayout/>}>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/pagina/:slug" element={<PaginaDinamica/>}/> {/* 2. Add this new route */}
+                <Route path="/pagina/:slug" element={<PaginaDinamica/>}/>
                 <Route path="/trabalhe-conosco" element={<TrabalheConosco/>}/>
                 <Route path="/evento" element={<Evento/>}/>
                 <Route path="/servicos" element={<Servicos/>}/>
                 <Route path="/sobre" element={<Sobre/>}/>
                 <Route path="/noticias" element={<Noticias/>}/>
-                <Route path="/newsletter/cancelar" element={<CancelarInscricaoPage/>}/> {/* Adicione esta rota */}
-                <Route path="/search" element={<BuscaPage/>}/> {/* Adicionar a rota de busca */}
-                <Route path="/pagina/view/:id" element={<PaginaViewPage/>}/> {/* 2. Adicionar a rota */}
-                <Route path="/publicacao/:slug" element={<PublicationDetailPage/>}/> {/* Adicione esta rota */}
+                <Route path="/newsletter/cancelar" element={<CancelarInscricaoPage/>}/>
+                <Route path="/search" element={<BuscaPage/>}/>
+                <Route path="/pagina/view/:id" element={<PaginaViewPage/>}/>
+                <Route path="/publicacao/:slug" element={<PublicationDetailPage/>}/>
                 <Route path="/tags" element={<TagsListPage/>}/>
                 <Route path="/tag/:slug" element={<TagDetailPage/>}/>
             </Route>
@@ -50,7 +51,9 @@ const AppRoutes: React.FC = () => {
                 <Route path="/conteudo" element={<Conteudo/>}/>
             </Route>
 
+            {/* Rotas de editores (fora do layout principal para máxima flexibilidade) */}
             <Route path="/post-editor" element={<PostEditor/>}/>
+            <Route path="/evento-editor" element={<EventoEditor/>}/> {/* Nova rota para eventos */}
 
         </Routes>
     );

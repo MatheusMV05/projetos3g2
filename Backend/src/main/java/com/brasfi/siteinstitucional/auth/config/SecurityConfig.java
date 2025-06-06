@@ -24,6 +24,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -38,7 +39,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))// Configuração explícita do CORS
+                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Configuração explícita do CORS
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Permitir todas as requisições OPTIONS
                         .requestMatchers("/api/auth/**").permitAll()
@@ -60,12 +61,37 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3001", "http://127.0.0.1:3000")); // << troque isso
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
+
+        // CORRIGINDO: Permitir tanto localhost:3000 quanto localhost:3001 e outras variações
+        configuration.setAllowedOrigins(Arrays.asList(
+                "http://localhost:3000",     // Frontend React (porta padrão)
+                "http://localhost:3001",     // Frontend React (porta alternativa)
+                "http://127.0.0.1:3000",     // Versão com IP local
+                "http://127.0.0.1:3001"      // Versão com IP local alternativa
+        ));
+
+        // Permitir todos os métodos HTTP necessários
+        configuration.setAllowedMethods(Arrays.asList(
+                "GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD"
+        ));
+
+        // Permitir todos os headers
+        configuration.setAllowedHeaders(List.of("*"));
+
+        // Permitir envio de credenciais (cookies, headers de autenticação)
         configuration.setAllowCredentials(true);
+
+        // Cache da configuração CORS por 1 hora
         configuration.setMaxAge(3600L);
 
+        // Headers que o frontend pode acessar
+        configuration.setExposedHeaders(Arrays.asList(
+                "Authorization",
+                "Content-Type",
+                "X-Total-Count",
+                "Access-Control-Allow-Origin",
+                "Access-Control-Allow-Credentials"
+        ));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
