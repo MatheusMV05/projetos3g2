@@ -1,0 +1,50 @@
+.header-adm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  margin-right: 1rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.register-btn {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.register-btn:hover {
+  background-color: #005fa3;
+}
+
+.nav-links a:hover {
+  color: #0077cc;
+}
+
+.logo {
+  height: 40px;
+}
+
+.header-right .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}

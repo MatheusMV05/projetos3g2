@@ -1,5 +1,6 @@
 package com.brasfi.model;
 
+import com.brasfi.siteinstitucional.auth.entity.Usuario;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -44,7 +45,10 @@ public class Publication {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
-    private User author;
+    private Usuario author;
+
+    @Column(name = "author_email")
+    private String authorEmail;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
@@ -65,7 +69,7 @@ public class Publication {
     private LocalDateTime updatedAt;
 
     @Column(name = "view_count")
-    private Integer viewCount = 0;
+    private Long viewCount = 0L;
 
     private Boolean featured = false;
 

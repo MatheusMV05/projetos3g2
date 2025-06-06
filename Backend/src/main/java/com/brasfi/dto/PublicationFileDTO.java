@@ -1,6 +1,5 @@
 package com.brasfi.dto;
 
-import com.brasfi.model.PublicationFile;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -13,7 +12,7 @@ public class PublicationFileDTO {
     private String filePath;
     private Long fileSize;
     private String mimeType;
-    private PublicationFile.FileType fileType;
+    private String fileType;
     private Boolean isMainFile;
     private LocalDateTime uploadDate;
 }

@@ -36,6 +36,4 @@ public class MensagemDTO {
 
     private boolean respondida;
 
-    @NotBlank(message = "Verificação reCAPTCHA é obrigatória")
-    private String recaptchaToken;
 }

@@ -1,0 +1,77 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* Centraliza os itens horizontalmente */
+	gap: 80px;
+	align-self: stretch;
+	padding: 64px 32px;
+	background-color: #D9F4AF;
+	flex-wrap: wrap;
+	width: 100%;
+	margin: 0 auto;
+	/* Centraliza o contêiner na tela */
+}
+
+.video {
+	width: 400px;
+	height: 400px;
+	background-color: #555;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	cursor: pointer;
+}
+
+.playButton {
+	width: 48px;
+	height: 48px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border-radius: 12px;
+	color: white;
+	font-size: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.content {
+	max-width: 500px;
+}
+
+.stars {
+	font-size: 1.2rem;
+	color: #000;
+	margin-bottom: 16px;
+}
+
+blockquote {
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 24px;
+	letter-spacing: -0.72px;
+	color: #111;
+}
+
+.author {
+	margin-top: 16px;
+}
+
+.author strong {
+	display: block;
+	color: #000;
+	font-size: 1.5 rem;
+	font-weight: 600;
+	line-height: 24px;
+	/* 100% */
+	letter-spacing: -0.72px;
+}
+
+.author span {
+	display: block;
+	font-size: 1rem;
+	font-weight: 400;
+	color: #555;
+}

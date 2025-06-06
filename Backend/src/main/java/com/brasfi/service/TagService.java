@@ -87,6 +87,7 @@ public class TagService {
     public List<TagDTO> getMostUsedTags(int limit) {
         return tagRepository.findMostUsedTags(limit)
                 .stream()
+                .limit(limit)
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
@@ -115,6 +116,7 @@ public class TagService {
         dto.setDescription(tag.getDescription());
         dto.setColor(tag.getColor());
         dto.setActive(tag.isActive());
+        dto.setUsageCount(tag.getUsageCount());
         dto.setCreatedAt(tag.getCreatedAt());
         dto.setUpdatedAt(tag.getUpdatedAt());
         return dto;

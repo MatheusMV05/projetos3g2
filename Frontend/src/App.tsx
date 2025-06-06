@@ -1,33 +1,29 @@
-import { useState } from 'react';
-import './App.css';
-import ApiTest from './components/ApiTest';
+import React, { useEffect } from 'react';
+import AppRoutes from './routes/AppRoutes';
+import AnalyticsTracker from './components/Analytics/AnalyticsTracker';
+import { AuthService } from './services/authService';
 
-function App() {
-  const [showTest, setShowTest] = useState(false);
+const App: React.FC = () => {
+    // Inicializa o serviço de autenticação quando a aplicação carregar
+    useEffect(() => {
+        AuthService.initialize();
 
-  return (
-    <div className="app-container">
-      <header>
-        <h1>Site Institucional</h1>
-        <p>Projeto de gerenciamento de páginas institucionais</p>
-      </header>
+        // Debug: mostra informações de autenticação no console (apenas em desenvolvimento)
+        if (process.env.NODE_ENV === 'development') {
+            console.log('🔐 Auth Status:', {
+                isAuthenticated: AuthService.isAuthenticated(),
+                userEmail: AuthService.getUserEmail(),
+                hasToken: !!AuthService.getToken()
+            });
+        }
+    }, []);
 
-      <main>
-        <button 
-          onClick={() => setShowTest(!showTest)}
-          className="toggle-button"
-        >
-          {showTest ? 'Esconder Teste de API' : 'Mostrar Teste de API'}
-        </button>
-
-        {showTest && <ApiTest />}
-      </main>
-
-      <footer>
-        <p>© 2025 Site Institucional</p>
-      </footer>
-    </div>
-  );
-}
+    return (
+        <div style={{fontFamily: 'Unageo, sans-serif'}}>
+            <AnalyticsTracker/>
+            <AppRoutes/>
+        </div>
+    );
+};
 
 export default App;

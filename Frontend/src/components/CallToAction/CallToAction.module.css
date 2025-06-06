@@ -1,0 +1,99 @@
+.container {
+	background-color: #5a5a5a;
+	width: 100%;
+	padding: 112px 64px;
+	text-align: center;
+}
+
+.title {
+	color: #fff;
+	font-size: 3.5rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 100%;
+	letter-spacing: -1.68px;
+	margin-bottom: 16px;
+}
+
+.subtitle {
+	color: #fff;
+	font-size: 1.5rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 32px;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.buttonGroup {
+	display: flex;
+	padding: 12px 24px;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.supportButton {
+	background-color: #f4b315;
+	color: #000;
+	border: none;
+	padding: 12px 24px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	border-radius: 4px;
+	border: 1px solid #fff;
+	min-width: 140px;
+}
+
+.participateButton {
+	background-color: transparent;
+	color: #fff;
+	border: 2px solid #fff;
+	padding: 12px 24px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	border-radius: 4px;
+	border: 1px solid #fff;
+	min-width: 140px;
+}
+
+/* ✅ Responsividade */
+@media (max-width: 768px) {
+	.title {
+		font-size: 2rem;
+	}
+
+	.subtitle {
+		font-size: 1rem;
+	}
+
+	.buttonGroup {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.supportButton,
+	.participateButton {
+		width: 80%;
+		max-width: 300px;
+	}
+}
+
+@media (max-width: 480px) {
+	.title {
+		font-size: 1.5rem;
+	}
+
+	.subtitle {
+		font-size: 0.95rem;
+	}
+
+	.container {
+		padding: 40px 16px;
+	}
+}

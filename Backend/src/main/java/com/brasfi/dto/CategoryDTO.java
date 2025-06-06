@@ -19,7 +19,11 @@ public class CategoryDTO {
     @Size(max = 1000, message = "Descrição deve ter no máximo 1000 caracteres")
     private String description;
 
+    private boolean active = true;
+
     private LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
+
     private Long publicationCount;
 }

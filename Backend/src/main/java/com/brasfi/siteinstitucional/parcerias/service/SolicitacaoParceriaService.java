@@ -5,7 +5,6 @@ import com.brasfi.siteinstitucional.admin.notification.publisher.NotificacaoPubl
 import com.brasfi.siteinstitucional.auth.entity.Usuario;
 import com.brasfi.siteinstitucional.auth.repository.UsuarioRepository;
 import com.brasfi.siteinstitucional.comunicacao.service.EmailService;
-import com.brasfi.siteinstitucional.comunicacao.service.RecaptchaService;
 import com.brasfi.siteinstitucional.exception.ResourceNotFoundException;
 import com.brasfi.siteinstitucional.parcerias.dto.SolicitacaoParceriaCreateDTO;
 import com.brasfi.siteinstitucional.parcerias.dto.SolicitacaoParceriaDTO;
@@ -34,7 +33,6 @@ public class SolicitacaoParceriaService {
 
     private final SolicitacaoParceriaRepository solicitacaoRepository;
     private final UsuarioRepository usuarioRepository;
-    private final RecaptchaService recaptchaService;
     private final EmailService emailService;
     private final NotificacaoPublisher notificacaoPublisher;
 
@@ -44,9 +42,7 @@ public class SolicitacaoParceriaService {
     @Transactional
     @Auditavel(acao = "CRIAR", entidade = "SOLICITACAO_PARCERIA")
     public SolicitacaoParceriaDTO criarSolicitacao(SolicitacaoParceriaCreateDTO dto) {
-        if (!recaptchaService.validarToken(dto.getRecaptchaToken())) {
-            throw new IllegalArgumentException("Falha na verificação reCAPTCHA.");
-        }
+
 
         SolicitacaoParceria solicitacao = SolicitacaoParceria.builder()
                 .nomeOrganizacao(dto.getNomeOrganizacao())

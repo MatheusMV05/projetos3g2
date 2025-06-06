@@ -1,14 +1,13 @@
 package com.brasfi.siteinstitucional.sitemap;
 
-import com.brasfi.siteinstitucional.entity.Pagina; // Supondo que você tem uma entidade Pagina
-import com.brasfi.siteinstitucional.repository.PaginaRepository; // E seu repositório
-// Importar outros repositórios/serviços para outras entidades (Parceiros, Notícias, etc.)
+import com.brasfi.siteinstitucional.entity.Pagina;
+import com.brasfi.siteinstitucional.repository.PaginaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,9 +15,8 @@ import java.util.List;
 public class SitemapService {
 
     private final PaginaRepository paginaRepository;
-    // Injete outros repositórios para outras seções do site (ex: ParceiroRepository, NoticiaRepository)
 
-    @Value("${application.base-url:http://localhost:8080}") // Defina no application.properties
+    @Value("${application.base-url:http://localhost:8080}")
     private String baseUrl;
 
     public String generateSitemapXml() {
@@ -30,28 +28,17 @@ public class SitemapService {
         addUrl(xml, baseUrl + "/", null, "daily", 1.0);
 
         // Adicionar outras páginas estáticas principais
-        addUrl(xml, baseUrl + "/quem-somos", null, "monthly", 0.8);
-        addUrl(xml, baseUrl + "/nosso-impacto", null, "weekly", 0.8);
-        addUrl(xml, baseUrl + "/parcerias", null, "monthly", 0.7);
-        // ... outras páginas fixas
+        addUrl(xml, baseUrl + "/sobre", null, "monthly", 0.8); // Changed from /quem-somos
+        addUrl(xml, baseUrl + "/servicos", null, "weekly", 0.8); // Mapped /nosso-impacto to /servicos
+        addUrl(xml, baseUrl + "/trabalhe-conosco", null, "monthly", 0.7); // Mapped /parcerias to /trabalhe-conosco
 
-        // Páginas Dinâmicas (ex: de 'PaginaRepository')
-        List<Pagina> paginasDinamicas = paginaRepository.findAll(); // Idealmente, apenas as ativas/públicas
+        // Páginas Dinâmicas
+        List<Pagina> paginasDinamicas = paginaRepository.findAll();
         for (Pagina pagina : paginasDinamicas) {
-            // Assumindo que 'pagina.getSlug()' existe e é usado na URL
             addUrl(xml, baseUrl + "/pagina/" + pagina.getSlug(),
                     pagina.getDataAtualizacao() != null ? pagina.getDataAtualizacao() : pagina.getDataCriacao(),
                     "weekly", 0.6);
         }
-
-        // Adicionar URLs de Parceiros (se houver páginas individuais para eles)
-        // List<Parceiro> parceiros = parceiroRepository.findByVisivelTrueAndAtivoTrueOrderByNomeOrganizacaoAsc();
-        // for (Parceiro parceiro : parceiros) {
-        //     addUrl(xml, baseUrl + "/parceiro/" + parceiro.getId(), // ou slug se tiver
-        //            parceiro.getDataAtualizacao(), "monthly", 0.5);
-        // }
-
-        // Adicionar URLs de Notícias, Eventos, etc. de forma similar
 
         xml.append("</urlset>");
         return xml.toString();

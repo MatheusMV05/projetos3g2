@@ -1,0 +1,103 @@
+.blogPostHeader {
+    width: 100vw;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 2rem;
+    background-color: #f4b315;
+    color: #000000;
+    font-family: sans-serif;
+}
+
+.left {
+    flex: 2;
+}
+
+.right {
+    flex: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backLink {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+    text-transform: capitalize;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.details .icon {
+    font-size: 1.25rem;
+}
+
+.dot {
+    font-weight: bold;
+}
+
+.shareLabel {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.icons {
+    display: flex;
+    gap: 12px;
+    font-size: 1.2rem;
+}
+
+.icons a {
+    color: #000;
+    text-decoration: none;
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 5px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.icons a:hover {
+    transform: scale(1.1);
+}
+
+.imagePlaceholder {
+    width: 100%;
+    max-width: 500px;
+    height: 250px;
+    margin-top: 4.5rem;
+    background: #dddddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.imagePlaceholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

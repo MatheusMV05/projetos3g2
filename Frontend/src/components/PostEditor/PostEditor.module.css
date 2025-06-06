@@ -1,0 +1,179 @@
+.container {
+    padding: 2rem;
+    font-family: sans-serif;
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.back {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    /* adapta em telas pequenas */
+}
+
+.actions button {
+    margin-left: 0.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.save {
+    background-color: #e0e0e0;
+}
+
+.preview {
+    background-color: #d0d0ff;
+}
+
+.publish {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.titleInput {
+    font-size: 2rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.toolbar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.toolbar button {
+    border: 1px solid #ccc;
+    padding: 0.4rem 0.6rem;
+    background: #f9f9f9;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageInput {
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.editor {
+    border: 1px solid #ddd;
+    min-height: 300px;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.draftSaved {
+    margin-top: 1rem;
+    color: green;
+}
+
+.previewModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.previewContent {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+.statusMessage {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.statusMessage.info {
+    color: #004085;
+    background-color: #cce5ff;
+}
+
+.statusMessage.success {
+    color: #155724;
+    background-color: #d4edda;
+}
+
+.statusMessage.error {
+    color: #721c24;
+    background-color: #f8d7da;
+}
+
+.toolbar button.isActive {
+    background-color: #d0d0ff;
+    border-color: #3b82f6;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .toolbar {
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+
+    .titleInput {
+        font-size: 1.5rem;
+    }
+
+    .previewContent {
+        padding: 1rem;
+    }
+}

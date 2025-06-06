@@ -1,5 +1,6 @@
 package com.brasfi.model;
 
+import com.brasfi.siteinstitucional.auth.entity.Usuario;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,11 +10,11 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "publication_files")
+@Table(name = "publication_versions")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PublicationFile {
+public class PublicationVersion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,33 +24,29 @@ public class PublicationFile {
     @JoinColumn(name = "publication_id", nullable = false)
     private Publication publication;
 
-    @Column(name = "file_name", nullable = false, length = 500)
-    private String fileName;
+    @Column(name = "version_number", nullable = false)
+    private Integer versionNumber;
 
-    @Column(name = "original_name", nullable = false, length = 500)
-    private String originalName;
+    @Column(name = "title", nullable = false, length = 500)
+    private String title;
 
-    @Column(name = "file_path", nullable = false, length = 1000)
-    private String filePath;
+    @Column(name = "content", columnDefinition = "LONGTEXT")
+    private String content;
 
-    @Column(name = "file_size", nullable = false)
-    private Long fileSize;
+    @Column(name = "summary", columnDefinition = "TEXT")
+    private String summary;
 
-    @Column(name = "mime_type", nullable = false)
-    private String mimeType;
+    @Column(name = "change_reason", columnDefinition = "TEXT")
+    private String changeReason;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "file_type", nullable = false)
-    private FileType fileType;
-
-    @Column(name = "is_main_file")
-    private Boolean isMainFile = false;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "created_by")
+    private Usuario createdBy;
 
     @CreationTimestamp
-    @Column(name = "upload_date")
-    private LocalDateTime uploadDate;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
-    public enum FileType {
-        PDF, IMAGE, VIDEO, DOCUMENT
-    }
+    @Column(name = "is_current_version")
+    private Boolean isCurrentVersion = false;
 }

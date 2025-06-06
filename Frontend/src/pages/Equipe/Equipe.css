@@ -1,0 +1,65 @@
+.equipe {
+  padding: 2rem;
+  flex: 1;
+}
+
+.equipe-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background-color: #4a90e2;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.equipe-filtros {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.equipe-filtros input {
+  padding: 0.5rem;
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.equipe-tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.equipe-tabela th,
+.equipe-tabela td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.equipe-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
