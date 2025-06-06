@@ -4,7 +4,7 @@ import com.brasfi.siteinstitucional.entity.Evento;
 import com.brasfi.siteinstitucional.entity.Inscricao;
 import com.brasfi.siteinstitucional.entity.InscricaoStatus;
 import com.brasfi.siteinstitucional.repository.InscricaoRepository;
-import com.brasfi.siteinstitucional.service.EmailService;
+import com.brasfi.siteinstitucional.service.EventoEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -16,12 +16,12 @@ import java.util.List;
 public class LembreteScheduler {
 
     private final InscricaoRepository inscricaoRepository;
-    private final EmailService emailService;
+    private final EventoEmailService eventoEmailService;
 
     @Autowired
-    public LembreteScheduler(InscricaoRepository inscricaoRepository, EmailService emailService) {
+    public LembreteScheduler(InscricaoRepository inscricaoRepository, EventoEmailService eventoEmailService) {
         this.inscricaoRepository = inscricaoRepository;
-        this.emailService = emailService;
+        this.eventoEmailService = eventoEmailService;
     }
 
     /**
@@ -56,7 +56,7 @@ public class LembreteScheduler {
         } else {
             System.out.println("Encontradas " + inscricoesParaLembrete.size() + " inscrições para enviar lembretes.");
             for (Inscricao inscricao : inscricoesParaLembrete) {
-                emailService.enviarEmailLembrete(inscricao);
+                eventoEmailService.enviarEmailLembrete(inscricao);
             }
         }
     }

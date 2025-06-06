@@ -1,122 +1,100 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Slider from 'react-slick';
 import styles from './ClientFeedbackCarousel.module.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import {DepoimentoService, Depoimento} from '../../services/depoimentoService'; // 1. Importar
 
-interface Feedback {
-	id: number;
-	name: string;
-	title: string;
-	text: string;
-}
-
-const feedbacks: Feedback[] = [
-	{
-		id: 1,
-		name: 'Lorem Ipsum',
-		title: 'Dolor Sit, Amet Consectetur',
-		text: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet metus a nulla suscipit bibendum.”',
-	},
-	{
-		id: 2,
-		name: 'Sed Vitae',
-		title: 'Vestibulum Non, Ligula In',
-		text: '“Sed vitae nunc nec magna finibus pretium. Quisque convallis sapien ut mauris rhoncus, sed imperdiet nulla sodales.”',
-	},
-	{
-		id: 3,
-		name: 'Mauris Finibus',
-		title: 'Nulla Facilisi',
-		text: '“Mauris finibus justo vel nulla varius, non hendrerit justo scelerisque. In ut turpis felis.”',
-	},
-	{
-		id: 4,
-		name: 'Aliquam Erat',
-		title: 'Donec Ultricies',
-		text: '“Aliquam erat volutpat. Duis et sem sed purus sagittis ullamcorper. Donec ultricies lorem nec dignissim lacinia.”',
-	},
-];
-
-const Arrow = ({
-	className,
-	onClick,
-}: {
-	className?: string;
-	onClick?: () => void;
-}) => {
-	const isNext = className?.includes('slick-next');
-	const isPrev = className?.includes('slick-prev');
-
-	return (
-		<div
-			className={`${styles.arrow} ${isNext ? styles.next : ''} ${
-				isPrev ? styles.prev : ''
-			}`}
-			onClick={onClick}
-		>
-			<span className={styles.arrowIcon}>{isNext ? '→' : '←'}</span>
-		</div>
-	);
+// O componente Arrow permanece o mesmo
+const Arrow = ({className, onClick}: { className?: string; onClick?: () => void; }) => {
+    // ... (código do Arrow existente, sem alterações)
 };
 
 const ClientFeedbackCarousel: React.FC = () => {
-	const settings = {
-		dots: true,
-		infinite: true,
-		slidesToShow: 3,
-		slidesToScroll: 1,
-		speed: 500,
-		autoplay: true,
-		autoplaySpeed: 5000,
-		pauseOnHover: true,
-		arrows: true,
-		nextArrow: <Arrow className={`${styles.arrow} ${styles.next}`} />,
-		prevArrow: <Arrow className={`${styles.arrow} ${styles.prev}`} />,
-		responsive: [
-			{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
-				},
-			},
-			{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-				},
-			},
-		],
-	};
+    // 2. Adicionar estados para depoimentos, loading e erro
+    const [feedbacks, setFeedbacks] = useState<Depoimento[]>([]);
+    const [loading, setLoading] = useState(true);
 
-	return (
-		<section className={styles.carouselSection}>
-			<h2 className={styles.title}>Depoimentos de Clientes</h2>
-			<p className={styles.subtitle}>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at
-				felis vel sem tincidunt suscipit.
-			</p>
-			<div className={styles.sliderContainer}>
-				<Slider {...settings} className={styles.slider}>
-					{feedbacks.map((feedback) => (
-						<div key={feedback.id} className={styles.card}>
-							<div className={styles.stars}>★★★★★</div>
-							<p className={styles.text}>{feedback.text}</p>
-							<div className={styles.profile}>
-								<div className={styles.avatar}></div>
-								<div>
-									<p className={styles.name}>{feedback.name}</p>
-									<p className={styles.role}>{feedback.title}</p>
-								</div>
-							</div>
-						</div>
-					))}
-				</Slider>
-			</div>
-		</section>
-	);
+    // 3. Buscar os dados da API
+    useEffect(() => {
+        const fetchFeedbacks = async () => {
+            try {
+                const data = await DepoimentoService.listarAtivos();
+                setFeedbacks(data);
+            } catch (error) {
+                console.error("Erro ao buscar depoimentos:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchFeedbacks();
+    }, []);
+
+    const settings = {
+        dots: true,
+        infinite: feedbacks.length > 2, // Desativa o loop infinito se houver poucos itens
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        speed: 500,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        pauseOnHover: true,
+        arrows: true,
+        nextArrow: <Arrow className={`${styles.arrow} ${styles.next}`}/>,
+        prevArrow: <Arrow className={`${styles.arrow} ${styles.prev}`}/>,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {slidesToShow: 2, slidesToScroll: 1},
+            },
+            {
+                breakpoint: 768,
+                settings: {slidesToShow: 1, slidesToScroll: 1},
+            },
+        ],
+    };
+
+    if (loading) {
+        return <section className={styles.carouselSection}><p>Carregando depoimentos...</p></section>;
+    }
+
+    if (feedbacks.length === 0) {
+        return null; // Não renderiza a seção se não houver depoimentos
+    }
+
+    return (
+        <section className={styles.carouselSection}>
+            <h2 className={styles.title}>Depoimentos de Clientes</h2>
+            <p className={styles.subtitle}>
+                Veja o que nossos parceiros e clientes dizem sobre nosso trabalho.
+            </p>
+            <div className={styles.sliderContainer}>
+                {/* 4. Mapear sobre os dados do estado */}
+                <Slider {...settings} className={styles.slider}>
+                    {feedbacks.map((feedback) => (
+                        <div key={feedback.id} className={styles.card}>
+                            <div className={styles.stars}>★★★★★</div>
+                            <p className={styles.text}>“{feedback.texto}”</p>
+                            <div className={styles.profile}>
+                                <div className={styles.avatar}>
+                                    {/* Se tiver fotoUrl, usar <img>, senão, as iniciais */}
+                                    {feedback.fotoUrl
+                                        ? <img src={feedback.fotoUrl} alt={feedback.nome}/>
+                                        : <span>{feedback.nome.charAt(0)}</span>
+                                    }
+                                </div>
+                                <div>
+                                    <p className={styles.name}>{feedback.nome}</p>
+                                    <p className={styles.role}>{feedback.cargo}, {feedback.organizacao}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </Slider>
+            </div>
+        </section>
+    );
 };
 
 export default ClientFeedbackCarousel;

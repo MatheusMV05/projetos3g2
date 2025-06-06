@@ -13,13 +13,18 @@ public class CacheConfig {
     @Bean
     public CacheManager cacheManager() {
         ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager(
+                // Caches para informações institucionais
                 "informacoes-institucionais",
                 "informacoes-institucionais-all",
                 "informacoes-institucionais-ativas",
                 "informacoes-institucionais-tipo",
                 "informacoes-institucionais-ativas-tipo",
                 "informacoes-institucionais-map",
-                "informacoes-institucionais-map-tipo"
+                "informacoes-institucionais-map-tipo",
+
+                // Caches para sistema de tradução/internacionalização
+                "traducoes",
+                "traducao_especifica"
         );
         return cacheManager;
     }

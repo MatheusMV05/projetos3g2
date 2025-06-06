@@ -28,9 +28,9 @@ public class SitemapService {
         addUrl(xml, baseUrl + "/", null, "daily", 1.0);
 
         // Adicionar outras páginas estáticas principais
-        addUrl(xml, baseUrl + "/quem-somos", null, "monthly", 0.8);
-        addUrl(xml, baseUrl + "/nosso-impacto", null, "weekly", 0.8);
-        addUrl(xml, baseUrl + "/parcerias", null, "monthly", 0.7);
+        addUrl(xml, baseUrl + "/sobre", null, "monthly", 0.8); // Changed from /quem-somos
+        addUrl(xml, baseUrl + "/servicos", null, "weekly", 0.8); // Mapped /nosso-impacto to /servicos
+        addUrl(xml, baseUrl + "/trabalhe-conosco", null, "monthly", 0.7); // Mapped /parcerias to /trabalhe-conosco
 
         // Páginas Dinâmicas
         List<Pagina> paginasDinamicas = paginaRepository.findAll();

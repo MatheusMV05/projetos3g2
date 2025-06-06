@@ -14,22 +14,21 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors; // Para Java 8+
 
 @Service
 public class InscricaoService {
 
     private final InscricaoRepository inscricaoRepository;
     private final EventoRepository eventoRepository;
-    private final EmailService emailService;
+    private final EventoEmailService eventoEmailService;
 
     @Autowired
     public InscricaoService(InscricaoRepository inscricaoRepository,
                             EventoRepository eventoRepository,
-                            EmailService emailService) {
+                            EventoEmailService eventoEmailService) {
         this.inscricaoRepository = inscricaoRepository;
         this.eventoRepository = eventoRepository;
-        this.emailService = emailService;
+        this.eventoEmailService = eventoEmailService;
     }
 
     @Transactional
@@ -63,7 +62,7 @@ public class InscricaoService {
         Inscricao inscricaoSalva = inscricaoRepository.save(novaInscricao);
 
         // 5. Enviar e-mail de confirmação
-        emailService.enviarEmailConfirmacao(inscricaoSalva);
+        eventoEmailService.enviarEmailConfirmacao(inscricaoSalva);
 
         return inscricaoSalva;
     }
@@ -91,7 +90,7 @@ public class InscricaoService {
         inscricao.setStatus(InscricaoStatus.CONFIRMADA);
         Inscricao inscricaoAtualizada = inscricaoRepository.save(inscricao);
 
-        emailService.enviarEmailConfirmacao(inscricaoAtualizada);
+        eventoEmailService.enviarEmailConfirmacao(inscricaoAtualizada);
 
         return inscricaoAtualizada;
     }
@@ -109,7 +108,7 @@ public class InscricaoService {
         inscricao.setStatus(InscricaoStatus.CANCELADA);
         inscricaoRepository.save(inscricao);
 
-        emailService.enviarEmailCancelamento(inscricao);
+        eventoEmailService.enviarEmailCancelamento(inscricao);
     }
 
     public List<Inscricao> findAllInscricoes() {
