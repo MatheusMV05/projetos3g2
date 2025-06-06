@@ -7,42 +7,42 @@ const allProjects = [
     {
         title: 'Lorem Ipsum',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        tags: ['Lorem'],
+        tags: ['Tag 1'],
         image: 'https://via.placeholder.com/300x200',
     },
     {
         title: 'Lorem Ipsum',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        tags: ['Ipsum'],
+        tags: ['Tag 2'],
         image: 'https://via.placeholder.com/300x200',
     },
     {
         title: 'Lorem Ipsum',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        tags: ['Dolor'],
+        tags: ['Tag 3'],
         image: 'https://via.placeholder.com/300x200',
     },
     {
         title: 'Lorem Ipsum',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        tags: ['Lorem'],
+        tags: ['Tag 1', 'Tag 2'],
         image: 'https://via.placeholder.com/300x200',
     },
     {
         title: 'Lorem Ipsum',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        tags: ['Ipsum'],
+        tags: ['Tag 2', 'Tag 3'],
         image: 'https://via.placeholder.com/300x200',
     },
     {
         title: 'Lorem Ipsum',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        tags: ['Ipsum', 'Dolor'],
+        tags: ['Tag 1', 'Tag 3'],
         image: 'https://via.placeholder.com/300x200',
     },
 ];
 
-const categories = ['Todos', 'Lorem', 'Ipsum', 'Dolor', 'Sit', 'Amet'];
+const categories = ['Todos', 'Tag 1', 'Tag 2', 'Tag 3'];
 
 const SustainableProjectsSection: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState('Todos');
@@ -61,8 +61,8 @@ const SustainableProjectsSection: React.FC = () => {
                 transition={{duration: 0.6}}
                 viewport={{once: true}}
             >
-                <h2>Lorem ipsum dolor sit amet consectetur</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                <h2>Nossos Projetos Sustentáveis</h2>
+                <p>Explore nossos projetos em andamento e concluídos..</p>
             </motion.div>
 
             <div className={styles.filters}>
