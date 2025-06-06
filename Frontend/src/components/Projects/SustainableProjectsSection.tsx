@@ -1,47 +1,51 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {motion} from 'framer-motion';
-import ProjectsGrid from './ProjectsGrid';
+import ProjectsGrid from './ProjectsGrid.tsx';
 import styles from './SustainableProjectsSection.module.css';
-import {CategoryService} from '../../services/categoryService'; // 1. Importar
-import {CategoryDTO} from '../../services/publicationService';
 
-// Os projetos ainda são mockados, mas as categorias serão dinâmicas
 const allProjects = [
     {
         title: 'Lorem Ipsum',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        tags: ['Sustentabilidade'], // Usar nomes de categorias reais
+        tags: ['Lorem'],
         image: 'https://via.placeholder.com/300x200',
     },
     {
         title: 'Lorem Ipsum',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        tags: ['Finanças Verdes'],
+        tags: ['Ipsum'],
         image: 'https://via.placeholder.com/300x200',
     },
-    // ... mais projetos
+    {
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        tags: ['Dolor'],
+        image: 'https://via.placeholder.com/300x200',
+    },
+    {
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        tags: ['Lorem'],
+        image: 'https://via.placeholder.com/300x200',
+    },
+    {
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        tags: ['Ipsum'],
+        image: 'https://via.placeholder.com/300x200',
+    },
+    {
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        tags: ['Ipsum', 'Dolor'],
+        image: 'https://via.placeholder.com/300x200',
+    },
 ];
+
+const categories = ['Todos', 'Lorem', 'Ipsum', 'Dolor', 'Sit', 'Amet'];
 
 const SustainableProjectsSection: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState('Todos');
-    // 2. Adicionar estado para as categorias
-    const [categories, setCategories] = useState<CategoryDTO[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    // 3. Buscar as categorias da API
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const data = await CategoryService.listarTodas();
-                setCategories(data);
-            } catch (error) {
-                console.error("Erro ao buscar categorias:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchCategories();
-    }, []);
 
     const filteredProjects =
         selectedCategory === 'Todos'
@@ -62,22 +66,15 @@ const SustainableProjectsSection: React.FC = () => {
             </motion.div>
 
             <div className={styles.filters}>
-                {/* 4. Renderizar os botões dinamicamente */}
-                <button
-                    className={`${styles.filterBtn} ${selectedCategory === 'Todos' ? styles.active : ''}`}
-                    onClick={() => setSelectedCategory('Todos')}
-                >
-                    Todos
-                </button>
-                {loading ? <p>Carregando filtros...</p> : categories.map((cat) => (
+                {categories.map((cat) => (
                     <button
-                        key={cat.id}
+                        key={cat}
                         className={`${styles.filterBtn} ${
-                            selectedCategory === cat.name ? styles.active : ''
+                            selectedCategory === cat ? styles.active : ''
                         }`}
-                        onClick={() => setSelectedCategory(cat.name)}
+                        onClick={() => setSelectedCategory(cat)}
                     >
-                        {cat.name}
+                        {cat}
                     </button>
                 ))}
             </div>
