@@ -3,6 +3,7 @@ import {EventoService, Evento as EventoType} from '../../services/eventoService'
 import {EventHeader} from '../../components/EventHeader/EventHeader';
 import BlogPostHeader from '../../components/BlogPostHeader/BlogPostHeader';
 import ProximosEventos from '../../components/ProximosEventos/ProximosEventos';
+import Blog from '../../components/Blog/Blog';
 import styles from './Evento.module.css'; // Usaremos um CSS module para esta página
 
 const EventoPage: React.FC = () => {
@@ -49,6 +50,7 @@ const EventoPage: React.FC = () => {
 
     return (
         <div className={styles.pageContainer}>
+            <Blog />
             <div style={{textAlign: 'center', margin: '2rem 0'}}>
                 <h1>Eventos</h1>
                 <p>Fique por dentro da nossa agenda de workshops, webinars e conferências.</p>
