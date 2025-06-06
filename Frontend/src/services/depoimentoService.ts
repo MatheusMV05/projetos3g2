@@ -22,4 +22,13 @@ export const DepoimentoService = {
         const response = await api.get<Depoimento[]>('/public/depoimentos');
         return response.data;
     },
+
+    /**
+     * Busca todos os depoimentos ativos marcados como destaque.
+     * @returns Uma Promise com um array de depoimentos em destaque.
+     */
+    listarDestaques: async (): Promise<Depoimento[]> => {
+        const response = await api.get<Depoimento[]>('/public/depoimentos/destaques');
+        return response.data;
+    },
 };
