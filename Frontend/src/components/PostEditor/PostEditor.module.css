@@ -125,6 +125,32 @@
     overflow-y: auto;
 }
 
+.statusMessage {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.statusMessage.info {
+    color: #004085;
+    background-color: #cce5ff;
+}
+
+.statusMessage.success {
+    color: #155724;
+    background-color: #d4edda;
+}
+
+.statusMessage.error {
+    color: #721c24;
+    background-color: #f8d7da;
+}
+
+.toolbar button.isActive {
+    background-color: #d0d0ff;
+    border-color: #3b82f6;
+}
+
 @media (max-width: 768px) {
     .header {
         flex-direction: column;

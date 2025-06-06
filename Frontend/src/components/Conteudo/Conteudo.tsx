@@ -51,10 +51,6 @@ const Conteudo: React.FC = () => {
         if (conteudos.length === 0) {
             return (
                 <div className={styles.emptyState}>
-                    <p style={{fontSize: '1.4rem', margin: 0}}>Bem-vindo(a)!</p>
-                    <p style={{fontSize: '1rem', margin: 0, lineHeight: '1.5', color: '#444'}}>
-                        Você ainda não criou nenhum conteúdo para o seu site.
-                    </p>
                     <button
                         className={styles.createLink}
                         onClick={() => navigate('/post-editor', {state: {titulo: 'Novo conteúdo', conteudo: ''}})}
