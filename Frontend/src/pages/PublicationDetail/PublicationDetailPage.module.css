@@ -1,0 +1,90 @@
+.pageContainer {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.status {
+    text-align: center;
+    padding: 4rem;
+    font-size: 1.2rem;
+}
+
+.header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.category a {
+    color: #0077cc;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin: 0.5rem 0 1rem 0;
+    line-height: 1.2;
+}
+
+.meta {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.meta span {
+    margin: 0 0.5rem;
+}
+
+.summary {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #555;
+    line-height: 1.6;
+    border-left: 3px solid #eee;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.content {
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.content h2 {
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+}
+
+.content p {
+    margin-bottom: 1rem;
+}
+
+.footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background-color: #f1f1f1;
+    color: #555;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+}
+
+.tag:hover {
+    background-color: #e0e0e0;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Inscrição na Newsletter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .header {
+            background-color: #06538b;
+            padding: 20px;
+            text-align: center;
+        }
+        .header img {
+            max-width: 200px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #06538b;
+            color: white !important;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <img src="https://brasfi.com.br/assets/logo.png" alt="BRASFI" />
+</div>
+
+<div class="content">
+    <p>Olá <span th:text="${nome != '' ? nome : 'usuário'}">usuário</span>,</p>
+
+    <p>Obrigado por se inscrever em nossa newsletter! A partir de agora, você receberá atualizações sobre nossas iniciativas, projetos e novidades na área de finanças sustentáveis.</p>
+
+    <p>Na BRASFI, estamos comprometidos em promover um sistema financeiro mais sustentável e inclusivo. Sua participação é muito importante para nós.</p>
+
+    <p>Caso queira cancelar sua inscrição a qualquer momento, basta clicar no link de cancelamento que estará presente em todos os nossos emails.</p>
+
+    <p>Atenciosamente,<br>
+        Equipe BRASFI</p>
+</div>
+
+<div class="footer">
+    <p>© 2025 BRASFI - Finanças Sustentáveis<br>
+        Este é um email automático, por favor não responda a esta mensagem.</p>
+</div>
+</body>
+</html>

@@ -6,11 +6,9 @@
 	gap: 80px;
 	align-self: stretch;
 	padding: 64px 32px;
-	background-color: #fff;
+	background-color: #D9F4AF;
 	flex-wrap: wrap;
 	width: 100%;
-	max-width: 1200px;
-	/* Opcional: limite a largura máxima do componente */
 	margin: 0 auto;
 	/* Centraliza o contêiner na tela */
 }

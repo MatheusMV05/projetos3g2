@@ -5,7 +5,7 @@ const Missao: React.FC = () => {
 	return (
 		<section className={styles.container}>
 			<div className={styles.left}>
-				<h2>Lorem ipsum dolor sit amet consectetur adipiscing elit.</h2>
+				<h2>Conheça a Aliança de Finanças Sustentáveis e seu impacto no futuro.</h2>
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipiscing elit. Aenean sit
 					amet metus a nulla suscipit bibendum. Lorem ipsum dolor sit amet

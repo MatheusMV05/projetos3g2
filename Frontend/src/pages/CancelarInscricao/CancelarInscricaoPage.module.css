@@ -1,0 +1,67 @@
+.pageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f4f4f5;
+    padding: 2rem;
+}
+
+.card {
+    background-color: white;
+    padding: 2rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.card hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 1.5rem 0;
+}
+
+.email {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #005a9c;
+    word-break: break-all;
+    margin: 1rem 0 2rem 0;
+}
+
+.confirmButton {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.confirmButton:hover {
+    background-color: #c9302c;
+}
+
+.confirmButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.feedback h3 {
+    color: #333;
+}
+
+.feedback p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Impacto BRASFI</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #06538b;
+            color: white;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header h2 {
+            margin: 10px 0 0 0;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        .data-geracao {
+            text-align: right;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+
+        .section h3 {
+            color: #06538b;
+            border-bottom: 2px solid #06538b;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .resumo-executivo, .conclusao {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-left: 4px solid #06538b;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th {
+            background-color: #06538b;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .categoria-group {
+            margin: 20px 0;
+        }
+
+        .categoria-title {
+            font-weight: bold;
+            color: #06538b;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .metrica-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            page-break-inside: avoid;
+        }
+
+        .metrica-valor {
+            font-size: 24px;
+            font-weight: bold;
+            color: #06538b;
+        }
+
+        .metrica-titulo {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .metrica-descricao {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .depoimento {
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #06538b;
+            page-break-inside: avoid;
+        }
+
+        .depoimento-texto {
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .depoimento-autor {
+            text-align: right;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #06538b;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        @media print {
+            .section {
+                page-break-after: auto;
+            }
+
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1 th:text="${relatorio.titulo}">Relatório de Impacto BRASFI</h1>
+    <h2 th:text="${relatorio.subtitulo}">Subtítulo</h2>
+</div>
+
+<div class="data-geracao">
+    Gerado em: <span th:text="${dataFormatada}">01/01/2025 12:00</span>
+</div>
+
+<!-- Resumo Executivo -->
+<div class="section" th:if="${relatorio.resumoExecutivo}">
+    <h3>Resumo Executivo</h3>
+    <div class="resumo-executivo">
+        <p th:text="${relatorio.resumoExecutivo}">Resumo executivo aqui...</p>
+    </div>
+</div>
+
+<!-- Métricas por Categoria -->
+<div class="section" th:if="${relatorio.metricasPorCategoria}">
+    <h3>Métricas de Impacto por Categoria</h3>
+
+    <div th:each="entry : ${relatorio.metricasPorCategoria}" class="categoria-group">
+        <div class="categoria-title" th:text="${entry.key}">Categoria</div>
+
+        <div th:each="metrica : ${entry.value}" class="metrica-card">
+            <div class="metrica-valor">
+                <span th:text="${metrica.valor}">0</span>
+                <span th:text="${metrica.unidade}">unidade</span>
+            </div>
+            <div class="metrica-titulo" th:text="${metrica.titulo}">Título da Métrica</div>
+            <div class="metrica-descricao" th:if="${metrica.descricao}"
+                 th:text="${metrica.descricao}">Descrição</div>
+            <div class="metrica-descricao">
+                Ano: <span th:text="${metrica.ano}">2025</span>
+                <span th:if="${metrica.tipoIniciativa}">
+                        | Iniciativa: <span th:text="${metrica.tipoIniciativa}">Tipo</span>
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabela Resumida de Métricas -->
+<div class="section" th:if="${relatorio.metricas}">
+    <h3>Tabela Resumida de Métricas</h3>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Título</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+            <th>Ano</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="metrica : ${relatorio.metricas}">
+            <td th:text="${metrica.titulo}">Título</td>
+            <td>
+                <span th:text="${metrica.valor}">0</span>
+                <span th:text="${metrica.unidade}">unidade</span>
+            </td>
+            <td th:text="${metrica.categoria}">Categoria</td>
+            <td th:text="${metrica.ano}">2025</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Depoimentos -->
+<div class="section" th:if="${relatorio.depoimentos and not #lists.isEmpty(relatorio.depoimentos)}">
+    <h3>Depoimentos</h3>
+
+    <div th:each="depoimento : ${relatorio.depoimentos}" class="depoimento">
+        <div class="depoimento-texto">
+            "<span th:text="${depoimento.texto}">Texto do depoimento...</span>"
+        </div>
+        <div class="depoimento-autor">
+            — <span th:text="${depoimento.nome}">Nome</span>,
+            <span th:text="${depoimento.cargo}">Cargo</span> -
+            <span th:text="${depoimento.organizacao}">Organização</span>
+            (<span th:text="${depoimento.ano}">2025</span>)
+        </div>
+    </div>
+</div>
+
+<!-- Conclusão -->
+<div class="section" th:if="${relatorio.conclusao}">
+    <h3>Conclusão</h3>
+    <div class="conclusao">
+        <p th:text="${relatorio.conclusao}">Conclusão aqui...</p>
+    </div>
+</div>
+
+<div class="footer">
+    <p>© 2025 BRASFI - Finanças Sustentáveis</p>
+    <p>Este relatório foi gerado automaticamente pelo sistema de gestão da BRASFI.</p>
+</div>
+</body>
+</html>

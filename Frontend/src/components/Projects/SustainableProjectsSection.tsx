@@ -1,97 +1,97 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import ProjectCard from './ProjectCard';
+import React, {useState} from 'react';
+import {motion} from 'framer-motion';
+import ProjectsGrid from './ProjectsGrid.tsx';
 import styles from './SustainableProjectsSection.module.css';
 
 const allProjects = [
-	{
-		title: 'Lorem Ipsum',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Lorem'],
-		image: 'https://via.placeholder.com/300x200',
-	},
-	{
-		title: 'Lorem Ipsum',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Ipsum'],
-		image: 'https://via.placeholder.com/300x200',
-	},
-	{
-		title: 'Lorem Ipsum',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Dolor'],
-		image: 'https://via.placeholder.com/300x200',
-	},
-	{
-		title: 'Lorem Ipsum',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Lorem'],
-		image: 'https://via.placeholder.com/300x200',
-	},
-	{
-		title: 'Lorem Ipsum',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Ipsum'],
-		image: 'https://via.placeholder.com/300x200',
-	},
-	{
-		title: 'Lorem Ipsum',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tags: ['Ipsum', 'Dolor'],
-		image: 'https://via.placeholder.com/300x200',
-	},
+    {
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        tags: ['Tag 1'],
+        image: 'https://via.placeholder.com/300x200',
+    },
+    {
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        tags: ['Tag 2'],
+        image: 'https://via.placeholder.com/300x200',
+    },
+    {
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        tags: ['Tag 3'],
+        image: 'https://via.placeholder.com/300x200',
+    },
+    {
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        tags: ['Tag 1', 'Tag 2'],
+        image: 'https://via.placeholder.com/300x200',
+    },
+    {
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        tags: ['Tag 2', 'Tag 3'],
+        image: 'https://via.placeholder.com/300x200',
+    },
+    {
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        tags: ['Tag 1', 'Tag 3'],
+        image: 'https://via.placeholder.com/300x200',
+    },
 ];
 
-const categories = ['Todos', 'Lorem', 'Ipsum', 'Dolor', 'Sit', 'Amet'];
+const categories = ['Todos', 'Tag 1', 'Tag 2', 'Tag 3'];
 
 const SustainableProjectsSection: React.FC = () => {
-	const [selectedCategory, setSelectedCategory] = useState('Todos');
+    const [selectedCategory, setSelectedCategory] = useState('Todos');
 
-	const filteredProjects =
-		selectedCategory === 'Todos'
-			? allProjects
-			: allProjects.filter((p) => p.tags.includes(selectedCategory));
+    const filteredProjects =
+        selectedCategory === 'Todos'
+            ? allProjects
+            : allProjects.filter((p) => p.tags.includes(selectedCategory));
 
-	return (
-		<section className={styles.section}>
-			<motion.div
-				className={styles.header}
-				initial={{ opacity: 0, y: 50 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6 }}
-				viewport={{ once: true }}
-			>
-				<h2>Lorem ipsum dolor sit amet consectetur</h2>
-				<p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-			</motion.div>
+    return (
+        <section className={styles.section}>
+            <motion.div
+                className={styles.header}
+                initial={{opacity: 0, y: 50}}
+                whileInView={{opacity: 1, y: 0}}
+                transition={{duration: 0.6}}
+                viewport={{once: true}}
+            >
+                <h2>Nossos Projetos Sustentáveis</h2>
+                <p>Explore nossos projetos em andamento e concluídos..</p>
+            </motion.div>
 
-			<div className={styles.filters}>
-				{categories.map((cat) => (
-					<button
-						key={cat}
-						className={`${styles.filterBtn} ${
-							selectedCategory === cat ? styles.active : ''
-						}`}
-						onClick={() => setSelectedCategory(cat)}
-					>
-						{cat}
-					</button>
-				))}
-			</div>
+            <div className={styles.filters}>
+                {categories.map((cat) => (
+                    <button
+                        key={cat}
+                        className={`${styles.filterBtn} ${
+                            selectedCategory === cat ? styles.active : ''
+                        }`}
+                        onClick={() => setSelectedCategory(cat)}
+                    >
+                        {cat}
+                    </button>
+                ))}
+            </div>
 
-			<ProjectsGrid projects={filteredProjects} />
+            <ProjectsGrid projects={filteredProjects}/>
 
-			<motion.div
-				className={styles.buttonWrapper}
-				initial={{ opacity: 0, y: 50 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				transition={{ delay: 0.2 }}
-				viewport={{ once: true }}
-			>
-				<button className={styles.viewAllButton}>Lorem ipsum</button>
-			</motion.div>
-		</section>
-	);
+            <motion.div
+                className={styles.buttonWrapper}
+                initial={{opacity: 0, y: 50}}
+                whileInView={{opacity: 1, y: 0}}
+                transition={{delay: 0.2}}
+                viewport={{once: true}}
+            >
+                <button className={styles.viewAllButton}>Lorem ipsum</button>
+            </motion.div>
+        </section>
+    );
 };
 
 export default SustainableProjectsSection;

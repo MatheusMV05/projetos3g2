@@ -1,0 +1,90 @@
+.pageContainer {
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.status {
+    text-align: center;
+    padding: 4rem;
+    font-size: 1.2rem;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (min-width: 992px) {
+    .gridContainer {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.destaqueCard {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.destaqueImage {
+    height: 300px;
+    background: #5A5A5A;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.destaqueDate {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 4px;
+    line-height: 1.2;
+}
+
+.destaqueContent {
+    padding: 1.5rem;
+}
+
+.destaqueCategory {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #0077cc;
+    text-transform: uppercase;
+}
+
+.destaqueTitle {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.destaqueDescription {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.destaqueLink {
+    display: inline-block;
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.listaLateral {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}

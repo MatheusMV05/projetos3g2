@@ -149,18 +149,7 @@ const ProximosEventos: React.FC = () => {
 	return (
 		<div className={styles.container}>
 			{/* Botão de alternar modo de edição (apenas para desenvolvimento) */}
-			<div className={styles.editToggle}>
-				<button
-					onClick={() => setIsEditMode(!isEditMode)}
-					className={`${styles.editToggleButton} ${
-						isEditMode ? styles.editActive : ''
-					}`}
-				>
-					{isEditMode
-						? 'Lorem ipsum dolor sit amet'
-						: 'Lorem ipsum dolor sit amet'}
-				</button>
-			</div>
+
 
 			{/* INTERFACE DE EDIÇÃO */}
 			{isEditMode && (
